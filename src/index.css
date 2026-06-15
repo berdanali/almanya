@@ -1,0 +1,115 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@theme {
+  --color-darkNavy-50: #f5f5fa;
+  --color-darkNavy-100: #eaeaf5;
+  --color-darkNavy-200: #d5d6ec;
+  --color-darkNavy-300: #b2b5dd;
+  --color-darkNavy-400: #878cc9;
+  --color-darkNavy-500: #646ab4;
+  --color-darkNavy-600: #4e529a;
+  --color-darkNavy-700: #3e417e;
+  --color-darkNavy-850: #1a183b;
+  --color-darkNavy-900: #1e1b4b;
+  --color-darkNavy-950: #0f0d26;
+  
+  --color-accentViolet-500: #6366f1;
+  --color-accentIndigo-500: #8b5cf6;
+}
+
+@utility glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+@utility glow-card {
+  box-shadow: 0 0 20px rgba(99, 102, 241, 0.15);
+}
+
+/* Base styles */
+@layer base {
+  body {
+    font-family: 'Inter', sans-serif;
+    @apply bg-slate-50 text-slate-900 transition-colors duration-300;
+  }
+  
+  body.dark {
+    @apply bg-darkNavy-950 text-slate-100;
+  }
+}
+
+/* Custom dark overrides for glass & glow utility */
+.dark .glass {
+  background: rgba(30, 27, 75, 0.6);
+  border: 1px solid rgba(99, 102, 241, 0.15);
+}
+
+.dark .glow-card {
+  box-shadow: 0 0 25px rgba(139, 92, 246, 0.2);
+}
+
+/* Custom Scrollbar for modern feel */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-slate-300 rounded-full;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  @apply bg-darkNavy-700 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-slate-400;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  @apply bg-darkNavy-600;
+}
+
+/* 3D Flip Card Styles */
+.flip-card {
+  perspective: 1000px;
+}
+
+.flip-card-inner {
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.flip-card.flipped .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.flip-card-back {
+  transform: rotateY(180deg);
+}
+
+/* Micro-animations */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(99, 102, 241, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(99, 102, 241, 0.7);
+  }
+}
+
+.pulse-glow-active {
+  animation: pulse-glow 2s infinite ease-in-out;
+}
