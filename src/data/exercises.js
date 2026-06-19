@@ -456,4 +456,384 @@ export const exercisesData = {
       ],
     },
   },
+
+  // ─── Modül 13: Perfekt (A2) ─────────────────────────────────────────────────
+  13: {
+    fillInBlank: [
+      { sentence: "Ich ___ gestern Brot gegessen.", blank: "habe", translation: "Dün ekmek yedim.", hint: "essen → haben + gegessen" },
+      { sentence: "Wir ___ nach Berlin gefahren.", blank: "sind", translation: "Berlin'e gittik.", hint: "fahren → sein + gefahren (hareket fiili!)" },
+      { sentence: "Er ___ eine Stunde telefoniert.", blank: "hat", translation: "Bir saat telefon etti.", hint: "telefonieren → haben (ge- almaz!)" },
+      { sentence: "Sie ___ früh aufgewacht.", blank: "ist", translation: "Erken uyandı.", hint: "aufwachen → sein (durum değişimi)" },
+      { sentence: "Hast du das Buch ___?", blank: "gelesen", translation: "Kitabı okudun mu?", hint: "lesen → Partizip II: gelesen" },
+      { sentence: "Ich ___ meinen Schlüssel verloren.", blank: "habe", translation: "Anahtarımı kaybettim.", hint: "verlieren → haben + verloren" },
+      { sentence: "Wir haben lange ___.", blank: "gesprochen", translation: "Uzun süre konuştuk.", hint: "sprechen → gesprochen" },
+      { sentence: "Er ist nach Hause ___.", blank: "gegangen", translation: "Eve gitti.", hint: "gehen → sein + gegangen" },
+    ],
+    grammar: {
+      conjugations: [
+        { verb: "haben (Perfekt)", pronoun: "ich", answer: "habe ... gemacht" },
+        { verb: "haben (Perfekt)", pronoun: "du", answer: "hast ... gemacht" },
+        { verb: "sein (Perfekt)", pronoun: "er/sie/es", answer: "ist ... gegangen" },
+        { verb: "sein (Perfekt)", pronoun: "wir", answer: "sind ... gegangen" },
+        { verb: "sein (Perfekt)", pronoun: "ihr", answer: "seid ... gegangen" },
+        { verb: "haben (Perfekt)", pronoun: "sie/Sie", answer: "haben ... gemacht" },
+      ],
+      articles: [
+        { word: "Partizip II (machen)", correct: "gemacht" },
+        { word: "Partizip II (essen)", correct: "gegessen" },
+        { word: "Partizip II (gehen)", correct: "gegangen" },
+        { word: "Partizip II (kommen)", correct: "gekommen" },
+        { word: "Partizip II (trinken)", correct: "getrunken" },
+        { word: "Partizip II (schreiben)", correct: "geschrieben" },
+      ],
+      wordOrder: [
+        { scrambled: ["gegessen", "habe", "Brot", "Ich"], correct: ["Ich", "habe", "Brot", "gegessen"], translation: "Ekmek yedim." },
+        { scrambled: ["gefahren", "sind", "Berlin", "Wir", "nach"], correct: ["Wir", "sind", "nach", "Berlin", "gefahren"], translation: "Berlin'e gittik." },
+        { scrambled: ["telefoniert", "hat", "lange", "Er"], correct: ["Er", "hat", "lange", "telefoniert"], translation: "Uzun süre telefon etti." },
+        { scrambled: ["du", "Hast", "Buch", "gelesen", "das"], correct: ["Hast", "du", "das", "Buch", "gelesen"], translation: "Kitabı okudun mu?" },
+      ],
+    },
+  },
+
+  // ─── Modül 14: Präteritum (A2) ──────────────────────────────────────────────
+  14: {
+    fillInBlank: [
+      { sentence: "Als Kind ___ ich sehr schüchtern.", blank: "war", translation: "Çocukken çok utangaçtım.", hint: "sein → Präteritum: war" },
+      { sentence: "Früher ___ wir kein Auto.", blank: "hatten", translation: "Eskiden arabamız yoktu.", hint: "haben → Präteritum: hatte (wir → hatten)" },
+      { sentence: "Er ___ nicht kommen, weil er krank war.", blank: "konnte", translation: "Hasta olduğu için gelemedi.", hint: "können → Präteritum: konnte" },
+      { sentence: "Ich ___ gestern lange arbeiten.", blank: "musste", translation: "Dün uzun süre çalışmak zorunda kaldım.", hint: "müssen → Präteritum: musste" },
+      { sentence: "Sie ___ einen neuen Job finden.", blank: "wollte", translation: "Yeni bir iş bulmak istedi.", hint: "wollen → Präteritum: wollte" },
+      { sentence: "Damals ___ alles teurer.", blank: "war", translation: "O zamanlar her şey daha pahalıydı.", hint: "sein → war" },
+      { sentence: "Als ich jung ___, lebte ich in Istanbul.", blank: "war", translation: "Gençken İstanbul'da yaşıyordum.", hint: "sein → war (als + Präteritum)" },
+      { sentence: "___ er gestern hier?", blank: "War", translation: "Dün burada mıydı?", hint: "Soru cümlesi: War er...?" },
+    ],
+    grammar: {
+      conjugations: [
+        { verb: "sein (Präteritum)", pronoun: "ich", answer: "war" },
+        { verb: "sein (Präteritum)", pronoun: "du", answer: "warst" },
+        { verb: "sein (Präteritum)", pronoun: "er/sie/es", answer: "war" },
+        { verb: "haben (Präteritum)", pronoun: "ich", answer: "hatte" },
+        { verb: "können (Präteritum)", pronoun: "ich", answer: "konnte" },
+        { verb: "müssen (Präteritum)", pronoun: "ich", answer: "musste" },
+      ],
+      articles: [
+        { word: "gehen (Präteritum ich)", correct: "ging" },
+        { word: "kommen (Präteritum er)", correct: "kam" },
+        { word: "sehen (Präteritum sie)", correct: "sah" },
+        { word: "fahren (Präteritum er)", correct: "fuhr" },
+        { word: "schreiben (Präteritum ich)", correct: "schrieb" },
+        { word: "sprechen (Präteritum er)", correct: "sprach" },
+      ],
+      wordOrder: [
+        { scrambled: ["schüchtern", "war", "Kind", "Als", "sehr", "ich"], correct: ["Als", "ich", "Kind", "war", "war", "ich", "sehr", "schüchtern"], translation: "Çocukken çok utangaçtım." },
+        { scrambled: ["krank", "er", "war", "weil", "konnte", "kommen", "er", "nicht"], correct: ["Er", "konnte", "nicht", "kommen", "weil", "er", "krank", "war"], translation: "Hasta olduğu için gelemedi." },
+        { scrambled: ["Früher", "kein", "hatten", "Auto", "wir"], correct: ["Früher", "hatten", "wir", "kein", "Auto"], translation: "Eskiden arabamız yoktu." },
+        { scrambled: ["musste", "lange", "arbeiten", "Ich", "gestern"], correct: ["Ich", "musste", "gestern", "lange", "arbeiten"], translation: "Dün uzun süre çalışmak zorundaydım." },
+      ],
+    },
+  },
+
+  // ─── Modül 15: Adjektiv-Deklination (A2) ────────────────────────────────────
+  15: {
+    fillInBlank: [
+      { sentence: "Das ist ein interessant___ Buch.", blank: "es", translation: "Bu ilginç bir kitap.", hint: "belirsiz artikel + nötr → Nominativ: -es" },
+      { sentence: "Er ist ein nett___ Mensch.", blank: "er", translation: "Sempatik bir insan.", hint: "belirsiz artikel + maskulin → Nominativ: -er" },
+      { sentence: "Ich suche eine günstig___ Wohnung.", blank: "e", translation: "Ucuz bir daire arıyorum.", hint: "belirsiz artikel + feminin → Akkusativ: -e" },
+      { sentence: "Mit dem nächst___ Bus kommen wir pünktlich.", blank: "en", translation: "Bir sonraki otobüsle tam zamanında varırız.", hint: "belirli artikel + Dativ → -en" },
+      { sentence: "Das alt___ Haus ist sehr schön.", blank: "e", translation: "Eski ev çok güzel.", hint: "belirli artikel + nötr → Nominativ: -e" },
+      { sentence: "Er hat einen neu___ Job.", blank: "en", translation: "Yeni bir işi var.", hint: "belirsiz artikel + maskulin → Akkusativ: -en" },
+      { sentence: "Die freundlich___ Verkäuferin hilft mir.", blank: "e", translation: "Nazik satış görevlisi bana yardım ediyor.", hint: "belirli artikel + feminin → Nominativ: -e" },
+      { sentence: "Wir wohnen in einer klein___ Wohnung.", blank: "en", translation: "Küçük bir dairede yaşıyoruz.", hint: "belirsiz artikel + feminin → Dativ: -en" },
+    ],
+    grammar: {
+      conjugations: [
+        { verb: "Adjektiv (belirli, Nom., mask.)", pronoun: "der alte Mann", answer: "-e" },
+        { verb: "Adjektiv (belirli, Nom., fem.)", pronoun: "die alte Frau", answer: "-e" },
+        { verb: "Adjektiv (belirli, Nom., nötr)", pronoun: "das alte Kind", answer: "-e" },
+        { verb: "Adjektiv (belirsiz, Nom., mask.)", pronoun: "ein alter Mann", answer: "-er" },
+        { verb: "Adjektiv (belirsiz, Nom., nötr)", pronoun: "ein altes Kind", answer: "-es" },
+        { verb: "Adjektiv (Dativ, hepsi)", pronoun: "dem/der/einem/einer", answer: "-en" },
+      ],
+      articles: [
+        { word: "interessant (das Buch — belirsiz Nom.)", correct: "interessantes" },
+        { word: "schön (die Stadt — belirli Nom.)", correct: "schöne" },
+        { word: "gut (der Mann — belirsiz Nom.)", correct: "guter" },
+        { word: "alt (das Haus — belirli Nom.)", correct: "alte" },
+        { word: "neu (den Tisch — belirli Akk.)", correct: "neuen" },
+        { word: "klein (dem Kind — belirsiz Dat.)", correct: "kleinen" },
+      ],
+      wordOrder: [
+        { scrambled: ["interessantes", "ist", "Das", "Buch", "ein"], correct: ["Das", "ist", "ein", "interessantes", "Buch"], translation: "Bu ilginç bir kitap." },
+        { scrambled: ["suche", "eine", "Ich", "günstige", "Wohnung"], correct: ["Ich", "suche", "eine", "günstige", "Wohnung"], translation: "Ucuz bir daire arıyorum." },
+        { scrambled: ["Verkäuferin", "Die", "hilft", "mir", "freundliche"], correct: ["Die", "freundliche", "Verkäuferin", "hilft", "mir"], translation: "Nazik satış görevlisi bana yardım ediyor." },
+        { scrambled: ["Wohnung", "kleinen", "wohnen", "einer", "Wir", "in"], correct: ["Wir", "wohnen", "in", "einer", "kleinen", "Wohnung"], translation: "Küçük bir dairede yaşıyoruz." },
+      ],
+    },
+  },
+
+  // ─── Modül 16: Komparativ & Superlativ (A2) ─────────────────────────────────
+  16: {
+    fillInBlank: [
+      { sentence: "München ist ___ als Hamburg.", blank: "teurer", translation: "Münih, Hamburg'dan daha pahalı.", hint: "teuer → Komparativ: teuer + er" },
+      { sentence: "Er ist ___ als ich.", blank: "größer", translation: "O benden daha uzun.", hint: "groß → Komparativ: größer (Umlaut!)" },
+      { sentence: "Sie tanzt am ___.", blank: "besten", translation: "En iyi o dans ediyor.", hint: "gut → Superlativ: am besten (düzensiz!)" },
+      { sentence: "Ich trinke ___ Tee als Kaffee.", blank: "lieber", translation: "Kahveden çok çay içmeyi tercih ederim.", hint: "gern → Komparativ: lieber" },
+      { sentence: "Am ___ esse ich Pizza.", blank: "liebsten", translation: "En çok pizza yemeyi severim.", hint: "gern → Superlativ: am liebsten" },
+      { sentence: "Das neue Modell ist ___ und günstiger.", blank: "besser", translation: "Yeni model daha iyi ve daha ucuz.", hint: "gut → Komparativ: besser (düzensiz!)" },
+      { sentence: "Er ist ___ als sein Bruder.", blank: "älter", translation: "Kardeşinden daha büyük.", hint: "alt → Komparativ: älter (Umlaut)" },
+      { sentence: "Sie ist genauso groß ___ ich.", blank: "wie", translation: "Benimle aynı boyda.", hint: "Eşitlik: genauso...wie" },
+    ],
+    grammar: {
+      conjugations: [
+        { verb: "gut → Komparativ", pronoun: "gut", answer: "besser" },
+        { verb: "gut → Superlativ", pronoun: "gut", answer: "am besten" },
+        { verb: "viel → Komparativ", pronoun: "viel", answer: "mehr" },
+        { verb: "gern → Komparativ", pronoun: "gern", answer: "lieber" },
+        { verb: "groß → Komparativ", pronoun: "groß", answer: "größer" },
+        { verb: "alt → Komparativ", pronoun: "alt", answer: "älter" },
+      ],
+      articles: [
+        { word: "schnell → Komparativ", correct: "schneller" },
+        { word: "klein → Komparativ", correct: "kleiner" },
+        { word: "lang → Komparativ", correct: "länger" },
+        { word: "kalt → Komparativ", correct: "kälter" },
+        { word: "jung → Komparativ", correct: "jünger" },
+        { word: "warm → Komparativ", correct: "wärmer" },
+      ],
+      wordOrder: [
+        { scrambled: ["als", "München", "teurer", "ist", "Hamburg"], correct: ["München", "ist", "teurer", "als", "Hamburg"], translation: "Münih, Hamburg'dan daha pahalı." },
+        { scrambled: ["besten", "am", "tanzt", "Sie"], correct: ["Sie", "tanzt", "am", "besten"], translation: "En iyi o dans ediyor." },
+        { scrambled: ["Tee", "lieber", "trinke", "als", "Kaffee", "Ich"], correct: ["Ich", "trinke", "lieber", "Tee", "als", "Kaffee"], translation: "Kahveden çok çay içmeyi tercih ederim." },
+        { scrambled: ["wie", "genauso", "ich", "groß", "Sie", "ist"], correct: ["Sie", "ist", "genauso", "groß", "wie", "ich"], translation: "Benimle aynı boyda." },
+      ],
+    },
+  },
+
+  // ─── Modül 17: Reflexive Verben (A2) ────────────────────────────────────────
+  17: {
+    fillInBlank: [
+      { sentence: "Ich freue ___ auf den Urlaub!", blank: "mich", translation: "Tatili dört gözle bekliyorum!", hint: "sich freuen → ich → mich" },
+      { sentence: "Wir müssen ___ beeilen!", blank: "uns", translation: "Acele etmeliyiz!", hint: "sich beeilen → wir → uns" },
+      { sentence: "Bitte setzen Sie ___!", blank: "sich", translation: "Lütfen oturun!", hint: "sich setzen → Sie (resmi) → sich" },
+      { sentence: "Ich interessiere ___ für Musik.", blank: "mich", translation: "Müzikle ilgileniyorum.", hint: "sich interessieren → ich → mich" },
+      { sentence: "Er ärgert ___ über den Lärm.", blank: "sich", translation: "Gürültüye sinirleniyor.", hint: "sich ärgern → er → sich" },
+      { sentence: "Ich erinnere ___ an die Schule.", blank: "mich", translation: "Okulu hatırlıyorum.", hint: "sich erinnern → ich → mich" },
+      { sentence: "Wie fühlst du ___ heute?", blank: "dich", translation: "Bugün kendini nasıl hissediyorsun?", hint: "sich fühlen → du → dich" },
+      { sentence: "Ich wasche ___ die Hände.", blank: "mir", translation: "Ellerimi yıkıyorum.", hint: "Ayrı nesne var → Dativ: mir" },
+    ],
+    grammar: {
+      conjugations: [
+        { verb: "sich freuen (Akk.)", pronoun: "ich", answer: "mich" },
+        { verb: "sich freuen (Akk.)", pronoun: "du", answer: "dich" },
+        { verb: "sich freuen (Akk.)", pronoun: "er/sie/es", answer: "sich" },
+        { verb: "sich freuen (Akk.)", pronoun: "wir", answer: "uns" },
+        { verb: "sich freuen (Akk.)", pronoun: "ihr", answer: "euch" },
+        { verb: "sich freuen (Akk.)", pronoun: "sie/Sie", answer: "sich" },
+      ],
+      articles: [
+        { word: "sich beeilen (wir)", correct: "uns beeilen" },
+        { word: "sich ärgern (er)", correct: "sich ärgern" },
+        { word: "sich setzen (du)", correct: "dich setzen" },
+        { word: "sich treffen (ihr)", correct: "euch treffen" },
+        { word: "sich erinnern (ich)", correct: "mich erinnern" },
+        { word: "sich kümmern (sie/pl.)", correct: "sich kümmern" },
+      ],
+      wordOrder: [
+        { scrambled: ["mich", "freue", "Urlaub", "Ich", "auf", "den"], correct: ["Ich", "freue", "mich", "auf", "den", "Urlaub"], translation: "Tatili dört gözle bekliyorum." },
+        { scrambled: ["uns", "Wir", "beeilen", "müssen"], correct: ["Wir", "müssen", "uns", "beeilen"], translation: "Acele etmeliyiz." },
+        { scrambled: ["Sie", "setzen", "sich", "Bitte"], correct: ["Bitte", "setzen", "Sie", "sich"], translation: "Lütfen oturun." },
+        { scrambled: ["Hände", "mir", "wasche", "Ich", "die"], correct: ["Ich", "wasche", "mir", "die", "Hände"], translation: "Ellerimi yıkıyorum." },
+      ],
+    },
+  },
+
+  // ─── Modül 18: Nebensätze (A2) ──────────────────────────────────────────────
+  18: {
+    fillInBlank: [
+      { sentence: "Ich lerne Deutsch, ___ ich in Deutschland arbeiten möchte.", blank: "weil", translation: "Almanya'da çalışmak istediğim için Almanca öğreniyorum.", hint: "'Çünkü' anlamındaki yan cümle bağlacı (fiil sona gider!)" },
+      { sentence: "Ich hoffe, ___ du bald kommst.", blank: "dass", translation: "Yakında geleceğini umuyorum.", hint: "'Ki / diye' anlamındaki bağlaç" },
+      { sentence: "___ ich Zeit habe, lese ich ein Buch.", blank: "Wenn", translation: "Zamanım olunca kitap okurum.", hint: "Koşul bağlacı (başa gelince virgül + ana cümle)" },
+      { sentence: "___ ich jung war, wohnte ich in Ankara.", blank: "Als", translation: "Gençken Ankara'da yaşıyordum.", hint: "Geçmişteki tek seferlik durum için: als" },
+      { sentence: "Ich weiß nicht, ___ er kommt.", blank: "ob", translation: "Gelip gelmeyeceğini bilmiyorum.", hint: "Dolaylı soru: mı/mi" },
+      { sentence: "Ich gehe spazieren, ___ es regnet.", blank: "obwohl", translation: "Yağmur yağmasına rağmen yürüyüşe çıkıyorum.", hint: "Zıtlık bağlacı: ...rağmen" },
+      { sentence: "Er kommt nicht, ___ er krank ist.", blank: "weil", translation: "Hasta olduğu için gelmiyor.", hint: "Sebep bağlacı" },
+      { sentence: "Ruf mich an, ___ du ankommst.", blank: "wenn", translation: "Varınca beni ara.", hint: "Tek seferlik gelecek koşul: wenn" },
+    ],
+    grammar: {
+      conjugations: [
+        { verb: "weil + Nebensatz", pronoun: "Fiil sona gider", answer: "...weil ich krank BIN." },
+        { verb: "dass + Nebensatz", pronoun: "Fiil sona gider", answer: "...dass er KOMMT." },
+        { verb: "wenn + Nebensatz", pronoun: "Fiil sona gider", answer: "...wenn ich Zeit HABE." },
+        { verb: "ob + Nebensatz", pronoun: "Fiil sona gider", answer: "...ob er KOMMT." },
+        { verb: "obwohl + Nebensatz", pronoun: "Fiil sona gider", answer: "...obwohl es REGNET." },
+        { verb: "als + Nebensatz (geçmiş)", pronoun: "Fiil sona gider", answer: "...als ich jung WAR." },
+      ],
+      articles: [
+        { word: "çünkü (yan cümle bağlacı)", correct: "weil" },
+        { word: "ki / diye", correct: "dass" },
+        { word: "eğer / her ne zaman", correct: "wenn" },
+        { word: "...iken (geçmiş, tek)", correct: "als" },
+        { word: "olup olmadığı", correct: "ob" },
+        { word: "...rağmen", correct: "obwohl" },
+      ],
+      wordOrder: [
+        { scrambled: ["Deutsch", "lerne", "Ich", "weil", "möchte", "ich", "arbeiten", "in", "Deutschland"], correct: ["Ich", "lerne", "Deutsch", "weil", "ich", "in", "Deutschland", "arbeiten", "möchte"], translation: "Almanya'da çalışmak istediğim için Almanca öğreniyorum." },
+        { scrambled: ["dass", "hoffe", "kommst", "du", "Ich", "bald"], correct: ["Ich", "hoffe", "dass", "du", "bald", "kommst"], translation: "Yakında geleceğini umuyorum." },
+        { scrambled: ["ob", "weiß", "kommt", "Ich", "nicht", "er"], correct: ["Ich", "weiß", "nicht", "ob", "er", "kommt"], translation: "Gelip gelmeyeceğini bilmiyorum." },
+        { scrambled: ["an", "wenn", "Ruf", "mich", "ankommst", "du"], correct: ["Ruf", "mich", "an", "wenn", "du", "ankommst"], translation: "Varınca beni ara." },
+      ],
+    },
+  },
+
+  // ─── Modül 19: Wechselpräpositionen (A2) ────────────────────────────────────
+  19: {
+    fillInBlank: [
+      { sentence: "Das Buch liegt ___ dem Tisch.", blank: "auf", translation: "Kitap masada duruyor.", hint: "Üstünde (konum) → auf + Dativ" },
+      { sentence: "Ich gehe ___ den Supermarkt.", blank: "in", translation: "Süpermarkete gidiyorum.", hint: "İçine hareket → in + Akkusativ" },
+      { sentence: "Die Katze sitzt ___ dem Stuhl.", blank: "unter", translation: "Kedi sandalyenin altında oturuyor.", hint: "Altında (konum) → unter + Dativ" },
+      { sentence: "Stell die Flasche ___ den Tisch.", blank: "auf", translation: "Şişeyi masanın üstüne koy.", hint: "Üstüne koyma (hareket) → auf + Akkusativ" },
+      { sentence: "Er wartet ___ dem Kino.", blank: "vor", translation: "Sinema önünde bekliyor.", hint: "Önünde (konum) → vor + Dativ" },
+      { sentence: "Das Café ist ___ der Bank.", blank: "neben", translation: "Kafe bankanın yanında.", hint: "Yanında (konum) → neben + Dativ" },
+      { sentence: "Ich hänge das Bild ___ die Wand.", blank: "an", translation: "Tabloyu duvara asıyorum.", hint: "Duvara asmak (hareket) → an + Akkusativ" },
+      { sentence: "Wir sind ___ Kino gegangen.", blank: "ins", translation: "Sinemaya gittik.", hint: "in + das = ins (Akkusativ — hareket)" },
+    ],
+    grammar: {
+      conjugations: [
+        { verb: "Wo? (konum)", pronoun: "→ Dativ", answer: "Das Buch liegt AUF DEM Tisch." },
+        { verb: "Wohin? (hareket)", pronoun: "→ Akkusativ", answer: "Ich lege das Buch AUF DEN Tisch." },
+        { verb: "stehen (konum fiili)", pronoun: "Dativ", answer: "Die Vase steht auf dem Regal." },
+        { verb: "stellen (hareket fiili)", pronoun: "Akkusativ", answer: "Ich stelle die Vase auf das Regal." },
+        { verb: "liegen (konum fiili)", pronoun: "Dativ", answer: "Das Buch liegt auf dem Tisch." },
+        { verb: "legen (hareket fiili)", pronoun: "Akkusativ", answer: "Ich lege das Buch auf den Tisch." },
+      ],
+      articles: [
+        { word: "in + dem (kontrakt.)", correct: "im" },
+        { word: "in + das (kontrakt.)", correct: "ins" },
+        { word: "an + dem (kontrakt.)", correct: "am" },
+        { word: "an + das (kontrakt.)", correct: "ans" },
+        { word: "vor + dem (Dativ)", correct: "vor dem" },
+        { word: "neben + der (Dativ, fem.)", correct: "neben der" },
+      ],
+      wordOrder: [
+        { scrambled: ["Tisch", "liegt", "dem", "Das", "Buch", "auf"], correct: ["Das", "Buch", "liegt", "auf", "dem", "Tisch"], translation: "Kitap masada duruyor." },
+        { scrambled: ["Supermarkt", "in", "den", "Ich", "gehe"], correct: ["Ich", "gehe", "in", "den", "Supermarkt"], translation: "Süpermarkete gidiyorum." },
+        { scrambled: ["Bild", "die", "Ich", "an", "Wand", "hänge", "das"], correct: ["Ich", "hänge", "das", "Bild", "an", "die", "Wand"], translation: "Tabloyu duvara asıyorum." },
+        { scrambled: ["Kino", "vor", "dem", "wartet", "Er"], correct: ["Er", "wartet", "vor", "dem", "Kino"], translation: "Sinema önünde bekliyor." },
+      ],
+    },
+  },
+
+  // ─── Modül 20: Konjunktiv II (A2) ───────────────────────────────────────────
+  20: {
+    fillInBlank: [
+      { sentence: "Ich ___ gerne reisen.", blank: "würde", translation: "Seyahat etmeyi çok isterdim.", hint: "würde + Infinitiv (Konjunktiv II kalıbı)" },
+      { sentence: "Das ___ wirklich toll!", blank: "wäre", translation: "Bu gerçekten harika olurdu!", hint: "sein → Konjunktiv II: wäre" },
+      { sentence: "Ich ___ gerne mehr Zeit.", blank: "hätte", translation: "Daha fazla zamanım olmasını isterdim.", hint: "haben → Konjunktiv II: hätte" },
+      { sentence: "___ Sie mir bitte helfen?", blank: "Könnten", translation: "Bana yardım edebilir misiniz lütfen?", hint: "können → Konjunktiv II: könnte (Sie → Könnten)" },
+      { sentence: "Wenn ich Geld ___, würde ich reisen.", blank: "hätte", translation: "Param olsaydı seyahat ederdim.", hint: "haben → Konjunktiv II: hätte (wenn-Satz)" },
+      { sentence: "Ich ___ lieber zu Hause bleiben.", blank: "würde", translation: "Evde kalmayı tercih ederim.", hint: "würde + gerne/lieber + Infinitiv" },
+      { sentence: "___ ich kurz fragen?", blank: "Dürfte", translation: "Kısaca sorsam olur mu?", hint: "dürfen → Konjunktiv II: dürfte" },
+      { sentence: "Ich ___ eigentlich arbeiten, aber ich bin müde.", blank: "müsste", translation: "Aslında çalışmam gerekirdi ama yorgunum.", hint: "müssen → Konjunktiv II: müsste" },
+    ],
+    grammar: {
+      conjugations: [
+        { verb: "würde (ich)", pronoun: "ich", answer: "würde" },
+        { verb: "würde (du)", pronoun: "du", answer: "würdest" },
+        { verb: "würde (er/sie)", pronoun: "er/sie/es", answer: "würde" },
+        { verb: "sein → Konj. II (ich)", pronoun: "ich", answer: "wäre" },
+        { verb: "haben → Konj. II (ich)", pronoun: "ich", answer: "hätte" },
+        { verb: "können → Konj. II (Sie)", pronoun: "Sie", answer: "könnten" },
+      ],
+      articles: [
+        { word: "sein → Konjunktiv II (ich)", correct: "wäre" },
+        { word: "haben → Konjunktiv II (wir)", correct: "hätten" },
+        { word: "können → Konjunktiv II (ich)", correct: "könnte" },
+        { word: "müssen → Konjunktiv II (ich)", correct: "müsste" },
+        { word: "dürfen → Konjunktiv II (ich)", correct: "dürfte" },
+        { word: "wollen → Konjunktiv II (ich)", correct: "wollte" },
+      ],
+      wordOrder: [
+        { scrambled: ["reisen", "würde", "gerne", "Ich"], correct: ["Ich", "würde", "gerne", "reisen"], translation: "Seyahat etmeyi çok isterdim." },
+        { scrambled: ["helfen", "Sie", "bitte", "Könnten", "mir"], correct: ["Könnten", "Sie", "mir", "bitte", "helfen"], translation: "Bana yardım edebilir misiniz lütfen?" },
+        { scrambled: ["hätte", "reisen", "Geld", "würde", "Wenn", "ich", "ich"], correct: ["Wenn", "ich", "Geld", "hätte", "würde", "ich", "reisen"], translation: "Param olsaydı seyahat ederdim." },
+        { scrambled: ["wäre", "toll", "Das", "wirklich"], correct: ["Das", "wäre", "wirklich", "toll"], translation: "Bu gerçekten harika olurdu." },
+      ],
+    },
+  },
+
+  // ─── Modül 21: Berufe & Arbeitswelt (A2) ────────────────────────────────────
+  21: {
+    fillInBlank: [
+      { sentence: "Ich ___ Arzt.", blank: "bin", translation: "Doktorum.", hint: "Meslek ifadesinde artikel yok! sein → ich bin" },
+      { sentence: "Er arbeitet ___ Ingenieur.", blank: "als", translation: "Mühendis olarak çalışıyor.", hint: "Meslek + als: arbeiten als ..." },
+      { sentence: "Ich habe eine ___ geschrieben.", blank: "Bewerbung", translation: "İş başvurusu yazdım.", hint: "İş başvurusu" },
+      { sentence: "Morgen habe ich ein ___.", blank: "Vorstellungsgespräch", translation: "Yarın iş görüşmem var.", hint: "İş görüşmesi" },
+      { sentence: "Das ___ ist leider nicht sehr hoch.", blank: "Gehalt", translation: "Maaş ne yazık ki çok yüksek değil.", hint: "Maaş" },
+      { sentence: "Ich ___ mich um die Stelle beworben.", blank: "habe", translation: "Pozisyon için başvurdum.", hint: "sich bewerben → Perfekt: habe...beworben" },
+      { sentence: "Meine ___ sind sehr nett.", blank: "Kollegen", translation: "Meslektaşlarım çok nazik.", hint: "Meslektaş çoğulu" },
+      { sentence: "Heute mache ich ___.", blank: "Überstunden", translation: "Bugün fazla mesai yapıyorum.", hint: "Fazla mesai" },
+    ],
+    grammar: {
+      conjugations: [
+        { verb: "werden (Futur I — ich)", pronoun: "ich", answer: "werde" },
+        { verb: "werden (Futur I — du)", pronoun: "du", answer: "wirst" },
+        { verb: "werden (Futur I — er/sie)", pronoun: "er/sie/es", answer: "wird" },
+        { verb: "werden (Futur I — wir)", pronoun: "wir", answer: "werden" },
+        { verb: "werden (Futur I — ihr)", pronoun: "ihr", answer: "werdet" },
+        { verb: "werden (Futur I — sie/Sie)", pronoun: "sie/Sie", answer: "werden" },
+      ],
+      articles: [
+        { word: "Arzt", correct: "der" },
+        { word: "Ärztin", correct: "die" },
+        { word: "Lehrer", correct: "der" },
+        { word: "Bewerbung", correct: "die" },
+        { word: "Gehalt", correct: "das" },
+        { word: "Vorstellungsgespräch", correct: "das" },
+      ],
+      wordOrder: [
+        { scrambled: ["bin", "Ich", "Arzt"], correct: ["Ich", "bin", "Arzt"], translation: "Doktorum." },
+        { scrambled: ["als", "Er", "arbeitet", "Ingenieur"], correct: ["Er", "arbeitet", "als", "Ingenieur"], translation: "Mühendis olarak çalışıyor." },
+        { scrambled: ["Vorstellungsgespräch", "habe", "ein", "Morgen", "ich"], correct: ["Morgen", "habe", "ich", "ein", "Vorstellungsgespräch"], translation: "Yarın iş görüşmem var." },
+        { scrambled: ["Stelle", "um", "beworben", "die", "mich", "Ich", "habe"], correct: ["Ich", "habe", "mich", "um", "die", "Stelle", "beworben"], translation: "Pozisyon için başvurdum." },
+      ],
+    },
+  },
+
+  // ─── Modül 22: Urlaub & Freizeit (A2) ───────────────────────────────────────
+  22: {
+    fillInBlank: [
+      { sentence: "Letzten Sommer ___ ich nach Portugal geflogen.", blank: "bin", translation: "Geçen yaz Portekiz'e uçtum.", hint: "fliegen → sein (hareket!)" },
+      { sentence: "Ich möchte ein Zimmer ___.", blank: "reservieren", translation: "Oda rezervasyonu yapmak istiyorum.", hint: "Rezervasyon yapmak: rezervieren" },
+      { sentence: "Der Zug hat 20 Minuten ___.", blank: "Verspätung", translation: "Trenin 20 dakika gecikmesi var.", hint: "Gecikme" },
+      { sentence: "Wir ___ das Schloss besichtigt.", blank: "haben", translation: "Şatoyu gezdik.", hint: "besichtigen → haben (Perfekt)" },
+      { sentence: "Was kann man hier ___?", blank: "besichtigen", translation: "Burada ne gibi yerler gezebiliriz?", hint: "Turistik gezme fiili" },
+      { sentence: "Ich packe meinen ___.", blank: "Koffer", translation: "Bavulumu topluyorum.", hint: "Bavul" },
+      { sentence: "Vergiss nicht deinen ___!", blank: "Reisepass", translation: "Pasaportunu unutma!", hint: "Pasaport" },
+      { sentence: "Am Wochenende gehe ich gerne ___.", blank: "wandern", translation: "Hafta sonları yürüyüşe çıkmayı severim.", hint: "gehen + wandern (Infinitiv)" },
+    ],
+    grammar: {
+      conjugations: [
+        { verb: "fliegen (Perfekt — ich)", pronoun: "ich", answer: "bin geflogen" },
+        { verb: "fahren (Perfekt — wir)", pronoun: "wir", answer: "sind gefahren" },
+        { verb: "besichtigen (Perfekt — wir)", pronoun: "wir", answer: "haben besichtigt" },
+        { verb: "reservieren (Perfekt — ich)", pronoun: "ich", answer: "habe reserviert" },
+        { verb: "machen Urlaub (Futur — wir)", pronoun: "wir", answer: "werden Urlaub machen" },
+        { verb: "wandern (Präsens — ich)", pronoun: "ich", answer: "gehe wandern" },
+      ],
+      articles: [
+        { word: "Flughafen", correct: "der" },
+        { word: "Koffer", correct: "der" },
+        { word: "Reisepass", correct: "der" },
+        { word: "Unterkunft", correct: "die" },
+        { word: "Museum", correct: "das" },
+        { word: "Sehenswürdigkeit", correct: "die" },
+      ],
+      wordOrder: [
+        { scrambled: ["Portugal", "geflogen", "ich", "nach", "Sommer", "Letzten", "bin"], correct: ["Letzten", "Sommer", "bin", "ich", "nach", "Portugal", "geflogen"], translation: "Geçen yaz Portekiz'e uçtum." },
+        { scrambled: ["Zimmer", "möchte", "Ich", "reservieren", "ein"], correct: ["Ich", "möchte", "ein", "Zimmer", "reservieren"], translation: "Oda rezervasyonu yapmak istiyorum." },
+        { scrambled: ["Reisepass", "nicht", "Vergiss", "deinen"], correct: ["Vergiss", "nicht", "deinen", "Reisepass"], translation: "Pasaportunu unutma!" },
+        { scrambled: ["Wochenende", "gerne", "Am", "wandern", "ich", "gehe"], correct: ["Am", "Wochenende", "gehe", "ich", "gerne", "wandern"], translation: "Hafta sonları yürüyüşe çıkmayı severim." },
+      ],
+    },
+  },
 };

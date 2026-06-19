@@ -45,6 +45,16 @@ export function useProgress() {
     return saved ? JSON.parse(saved) : [];
   });
 
+  const [wordStats, setWordStats] = useState(() => {
+    const saved = localStorage.getItem("almanca_word_stats");
+    return saved ? JSON.parse(saved) : {};
+  });
+
+  const [studyDays, setStudyDays] = useState(() => {
+    const saved = localStorage.getItem("almanca_study_days");
+    return saved ? JSON.parse(saved) : [];
+  });
+
   const [points, setPoints] = useState(() => {
     const saved = localStorage.getItem("almanca_points");
     return saved ? parseInt(saved, 10) : 0;
@@ -97,6 +107,14 @@ export function useProgress() {
     localStorage.setItem("almanca_flashcard_flips_today", JSON.stringify(flashcardFlips));
   }, [flashcardFlips]);
 
+  useEffect(() => {
+    localStorage.setItem("almanca_word_stats", JSON.stringify(wordStats));
+  }, [wordStats]);
+
+  useEffect(() => {
+    localStorage.setItem("almanca_study_days", JSON.stringify(studyDays));
+  }, [studyDays]);
+
   // Helper: update a quest's progress
   const updateQuestProgress = useCallback((questId, amount = 1) => {
     setDailyQuests(prev => {
@@ -110,6 +128,19 @@ export function useProgress() {
     });
   }, []);
 
+  const addPoints = useCallback((amount) => {
+    setPoints(prev => prev + amount);
+  }, []);
+
+  const addXP = useCallback((amount) => {
+    setXp(prev => prev + amount);
+  }, []);
+
+  const recordStudyDay = useCallback(() => {
+    const today = new Date().toISOString().split("T")[0];
+    setStudyDays((prev) => (prev.includes(today) ? prev : [...prev, today]));
+  }, []);
+
   const toggleWordLearned = useCallback((wordId) => {
     setLearnedWords(prev => {
       if (prev.includes(wordId)) {
@@ -121,7 +152,7 @@ export function useProgress() {
         return [...prev, wordId];
       }
     });
-  }, [updateQuestProgress]);
+  }, [updateQuestProgress, addXP]);
 
   const isWordLearned = (wordId) => learnedWords.includes(wordId);
 
@@ -153,7 +184,8 @@ export function useProgress() {
 
     // Quest: complete exercise
     updateQuestProgress("complete_exercise");
-  }, [updateQuestProgress]);
+    recordStudyDay();
+  }, [updateQuestProgress, recordStudyDay, addPoints, addXP]);
 
   const saveGoetheProgress = (fascicleId, score, total) => {
     setGoetheProgress((prev) => {
@@ -173,13 +205,20 @@ export function useProgress() {
     });
   };
 
-  const addPoints = useCallback((amount) => {
-    setPoints(prev => prev + amount);
-  }, []);
-
-  const addXP = useCallback((amount) => {
-    setXp(prev => prev + amount);
-  }, []);
+  const recordWordResult = useCallback((wordId, isCorrect) => {
+    setWordStats((prev) => {
+      const cur = prev[wordId] || { seen: 0, correct: 0, incorrect: 0 };
+      return {
+        ...prev,
+        [wordId]: {
+          seen: cur.seen + 1,
+          correct: isCorrect ? cur.correct + 1 : cur.correct,
+          incorrect: !isCorrect ? cur.incorrect + 1 : cur.incorrect,
+        },
+      };
+    });
+    recordStudyDay();
+  }, [recordStudyDay]);
 
   const recordFlashcardFlip = useCallback(() => {
     setFlashcardFlips(prev => {
@@ -212,6 +251,8 @@ export function useProgress() {
     setLearnedWords([]);
     setProgress({});
     setWrongAnswers([]);
+    setWordStats({});
+    setStudyDays([]);
     setPoints(0);
     setXp(0);
     localStorage.clear();
@@ -236,6 +277,9 @@ export function useProgress() {
     addWrongAnswer,
     removeWrongAnswer,
     clearWrongAnswers,
+    wordStats,
+    studyDays,
+    recordWordResult,
     resetAllProgress,
   };
 }

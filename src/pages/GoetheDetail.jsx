@@ -3,20 +3,22 @@ import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { ArrowLeft, CheckCircle2, ShieldAlert, Award, ChevronRight } from "lucide-react";
 import { goetheFascicles } from "../data/goethe";
-import FillInBlank from "../components/exercises/FillInBlank";
+import GoetheExerciseRunner from "../components/exercises/GoetheExerciseRunner";
 
 export default function GoetheDetail({ saveGoetheProgress }) {
   const { id } = useParams();
   const fascicleId = parseInt(id, 10);
   const fascicle = goetheFascicles.find(f => f.id === fascicleId);
 
-  const [activeTab, setActiveTab] = useState("theory"); // 'theory' | 'exercise'
+  const [activeTab, setActiveTab] = useState("theory");
   const [exerciseResult, setExerciseResult] = useState(null);
+  const [exerciseKey, setExerciseKey] = useState(0);
 
   useEffect(() => {
     window.scrollTo(0, 0);
     setExerciseResult(null);
     setActiveTab("theory");
+    setExerciseKey(k => k + 1);
   }, [fascicleId]);
 
   if (!fascicle) {
@@ -31,15 +33,16 @@ export default function GoetheDetail({ saveGoetheProgress }) {
   }
 
   const handleExerciseComplete = (score, bonusPoints, totalQuestions) => {
-    // Normal FillInBlank uses this signature
     saveGoetheProgress(fascicleId, score, totalQuestions);
     setExerciseResult({
       score,
       total: totalQuestions,
-      pointsEarned: (score * 10) + bonusPoints,
-      bonus: bonusPoints
+      pointsEarned: (score * 10) + (bonusPoints || 0),
+      bonus: bonusPoints || 0
     });
   };
+
+  const isA2 = fascicle.level === "A2";
 
   return (
     <div className="space-y-6 max-w-4xl mx-auto">
@@ -58,16 +61,25 @@ export default function GoetheDetail({ saveGoetheProgress }) {
           >
             {fascicle.icon}
           </div>
-          <div>
-            <span className="text-[10px] font-extrabold text-amber-500 uppercase tracking-widest block">Sınav Fasikülü {fascicle.id}</span>
-            <h1 className="text-xl font-black text-slate-800 dark:text-slate-100">
+          <div className="flex-1 min-w-0">
+            <div className="flex items-center gap-2 mb-0.5">
+              <span className="text-[10px] font-extrabold text-amber-500 uppercase tracking-widest">Fasikül {fascicle.id}</span>
+              <span className={`text-[10px] font-extrabold uppercase px-1.5 py-0.5 rounded-md tracking-widest ${
+                isA2
+                  ? "bg-violet-100 dark:bg-violet-950/40 text-violet-600 dark:text-violet-400"
+                  : "bg-sky-100 dark:bg-sky-950/40 text-sky-600 dark:text-sky-400"
+              }`}>
+                {fascicle.level || "A1"}
+              </span>
+            </div>
+            <h1 className="text-xl font-black text-slate-800 dark:text-slate-100 truncate">
               {fascicle.title}
               <span className="text-slate-400 dark:text-slate-500 font-medium text-base ml-2 hidden sm:inline">| {fascicle.subtitle}</span>
             </h1>
           </div>
         </div>
 
-        {/* Custom Toggle Tabs */}
+        {/* Tabs */}
         <div className="flex bg-slate-100 dark:bg-indigo-950/60 p-1.5 rounded-2xl">
           <button
             onClick={() => setActiveTab("theory")}
@@ -100,7 +112,6 @@ export default function GoetheDetail({ saveGoetheProgress }) {
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* Tips Section */}
             <div className="space-y-4">
               <h3 className="text-lg font-black text-slate-800 dark:text-slate-100 flex items-center gap-2">
                 <ShieldAlert className="w-5 h-5 text-rose-500" />
@@ -116,7 +127,6 @@ export default function GoetheDetail({ saveGoetheProgress }) {
               </ul>
             </div>
 
-            {/* Examples Section */}
             <div className="space-y-4">
               <h3 className="text-lg font-black text-slate-800 dark:text-slate-100 flex items-center gap-2">
                 <Award className="w-5 h-5 text-amber-500" />
@@ -149,13 +159,17 @@ export default function GoetheDetail({ saveGoetheProgress }) {
         <div className="animate-in fade-in duration-300">
           {!exerciseResult ? (
             <div className="bg-slate-50 dark:bg-indigo-950/10 p-1 rounded-3xl border border-slate-200/50 dark:border-indigo-900/10">
-              {fascicle.exercises.type === "fill" && (
-                <FillInBlank questions={fascicle.exercises.questions} onComplete={handleExerciseComplete} />
-              )}
+              <GoetheExerciseRunner
+                key={exerciseKey}
+                exercises={fascicle.exercises}
+                onComplete={handleExerciseComplete}
+              />
             </div>
           ) : (
             <div className="max-w-md mx-auto p-8 bg-white dark:bg-darkNavy-900 rounded-3xl border border-amber-200 dark:border-amber-900/40 shadow-lg text-center space-y-6">
-              <div className="text-6xl">{exerciseResult.score >= Math.round(exerciseResult.total * 0.7) ? "🎓" : "📚"}</div>
+              <div className="text-6xl">
+                {exerciseResult.score >= Math.round(exerciseResult.total * 0.7) ? "🎓" : "📚"}
+              </div>
               <div className="space-y-2">
                 <h3 className="text-2xl font-black text-slate-800 dark:text-slate-100">Sınav Tamamlandı!</h3>
                 <p className="text-sm font-semibold text-slate-500 dark:text-slate-400">
@@ -182,10 +196,10 @@ export default function GoetheDetail({ saveGoetheProgress }) {
 
               <div className="flex gap-3">
                 <button
-                  onClick={() => setActiveTab("theory")}
+                  onClick={() => { setExerciseResult(null); setExerciseKey(k => k + 1); }}
                   className="flex-1 py-3.5 bg-slate-100 hover:bg-slate-200 dark:bg-darkNavy-800 dark:hover:bg-darkNavy-700 text-slate-700 dark:text-slate-200 font-extrabold rounded-xl text-sm transition-all"
                 >
-                  Taktiklere Dön
+                  Tekrar Dene
                 </button>
                 <Link
                   to="/goethe"

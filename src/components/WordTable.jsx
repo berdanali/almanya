@@ -1,6 +1,7 @@
 // src/components/WordTable.jsx
 import React, { useState } from "react";
 import { Search, Check, BookOpen, EyeOff } from "lucide-react";
+import SpeakButton from "./SpeakButton";
 import { formatDifficulty } from "../utils/helpers";
 import { modules } from "../data/modules";
 
@@ -144,6 +145,7 @@ export default function WordTable({ words, learnedWords, toggleWordLearned }) {
             <thead className="bg-slate-50 dark:bg-indigo-950/50 text-xs font-bold text-slate-400 dark:text-slate-400 uppercase tracking-wider border-b border-slate-200 dark:border-indigo-900/30">
               <tr>
                 <th className="px-6 py-4">Kelime (Almanca)</th>
+                <th className="px-4 py-4 w-10"></th>
                 <th className="px-6 py-4">Anlamı (Türkçe)</th>
                 <th className="px-6 py-4">Tür</th>
                 <th className="px-6 py-4 text-center">Durum</th>
@@ -182,6 +184,9 @@ export default function WordTable({ words, learnedWords, toggleWordLearned }) {
                             </span>
                           )}
                         </td>
+                        <td className="px-2 py-4.5" onClick={(e) => e.stopPropagation()}>
+                          <SpeakButton text={word.artikel ? `${word.artikel} ${word.german}` : word.german} />
+                        </td>
                         <td className="px-6 py-4.5 font-semibold text-slate-700 dark:text-slate-300">
                           {word.turkish}
                         </td>
@@ -217,7 +222,7 @@ export default function WordTable({ words, learnedWords, toggleWordLearned }) {
                       {/* Expandable row detail */}
                       {isExpanded && (
                         <tr>
-                          <td colSpan="5" className="px-8 py-5 bg-slate-50/40 dark:bg-indigo-950/10">
+                          <td colSpan="6" className="px-8 py-5 bg-slate-50/40 dark:bg-indigo-950/10">
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                               <div className="space-y-2">
                                 <h4 className="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider">
@@ -254,7 +259,7 @@ export default function WordTable({ words, learnedWords, toggleWordLearned }) {
                 })
               ) : (
                 <tr>
-                  <td colSpan="5" className="text-center py-12 text-slate-400">
+                  <td colSpan="6" className="text-center py-12 text-slate-400">
                     Arama kriterlerine uygun kelime bulunamadı.
                   </td>
                 </tr>
@@ -311,6 +316,7 @@ export default function WordTable({ words, learnedWords, toggleWordLearned }) {
                       >
                         <Check className="w-4 h-4" />
                       </button>
+                      <SpeakButton text={word.artikel ? `${word.artikel} ${word.german}` : word.german} />
                     </div>
                   </div>
 

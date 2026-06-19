@@ -129,8 +129,8 @@ export default function GrammarExercise({ grammarData, onComplete }) {
       if (subIndex < wordOrders.length - 1) {
         setSubIndex((prev) => prev + 1);
       } else {
-        // Completed everything!
-        onComplete(score + (isCorrect ? 0 : 0), grandTotal); // score is already updated
+        // score state already includes this question's result (setScore batched before re-render)
+        onComplete(score, grandTotal);
       }
     }
   };

@@ -72,6 +72,28 @@ function CollapsibleSection({ icon: Icon, title, color, children, defaultOpen = 
   );
 }
 
+// Auto-generate fill-in-blank questions from module vocabulary
+function buildDynamicFillInBlank(moduleWords) {
+  const filtered = moduleWords.filter(
+    w => w.german && w.turkish && !w.german.includes("!") && !w.german.includes("?")
+  );
+  return shuffleArray(filtered).map(w => {
+    const isNoun = w.type === "noun" && w.artikel;
+    const hint = isNoun
+      ? `Artikel: ${w.artikel}${w.plural ? ` | Çoğul: ${w.plural}` : ""}`
+      : `Kelime türü: ${w.type}`;
+    return {
+      sentence: `"${w.turkish}" kelimesinin Almancası: ___.`,
+      blank: w.german,
+      translation: w.example
+        ? `${w.german} = ${w.turkish} | Örnek: ${w.exampleTR}`
+        : `${w.german} = ${w.turkish}`,
+      hint,
+      isDynamic: true,
+    };
+  });
+}
+
 export default function ModuleDetail({ progress, learnedWords, toggleWordLearned, saveModuleProgress }) {
   const { id } = useParams();
   const moduleId = parseInt(id, 10);
@@ -84,6 +106,7 @@ export default function ModuleDetail({ progress, learnedWords, toggleWordLearned
   const [activeTab, setActiveTab] = useState("notes");
   const [activeExercise, setActiveExercise] = useState(null);
   const [quizQuestions, setQuizQuestions] = useState([]);
+  const [activeGrammarData, setActiveGrammarData] = useState(null);
   const [dialogSpeaker, setDialogSpeaker] = useState("all");
   const [exerciseResult, setExerciseResult] = useState(null);
 
@@ -103,6 +126,16 @@ export default function ModuleDetail({ progress, learnedWords, toggleWordLearned
       </div>
     );
   }
+
+  // Combine static exercises.js questions + auto-generated word questions, shuffle, pick 12
+  const startFillInBlank = () => {
+    const staticQ = exercisesData[moduleId]?.fillInBlank || [];
+    const dynamicQ = buildDynamicFillInBlank(moduleWords);
+    const combined = shuffleArray([...staticQ, ...dynamicQ]);
+    setQuizQuestions(combined.slice(0, 12));
+    setActiveExercise("fill");
+    setExerciseResult(null);
+  };
 
   const startMultipleChoice = () => {
     const selectedWords = shuffleArray(moduleWords).slice(0, 10);
@@ -127,6 +160,18 @@ export default function ModuleDetail({ progress, learnedWords, toggleWordLearned
     });
     setQuizQuestions(questions);
     setActiveExercise("choice");
+    setExerciseResult(null);
+  };
+
+  // Shuffle grammar sub-arrays so order changes every session
+  const startGrammarExercise = () => {
+    if (!grammarExerciseData) return;
+    setActiveGrammarData({
+      conjugations: shuffleArray([...(grammarExerciseData.conjugations || [])]),
+      articles: shuffleArray([...(grammarExerciseData.articles || [])]),
+      wordOrder: shuffleArray([...(grammarExerciseData.wordOrder || [])]),
+    });
+    setActiveExercise("grammar");
     setExerciseResult(null);
   };
 
@@ -430,30 +475,44 @@ export default function ModuleDetail({ progress, learnedWords, toggleWordLearned
                 </p>
               </div>
 
+              {/* Pool size info */}
+              {(() => {
+                const staticCount = exercisesData[moduleId]?.fillInBlank?.length || 0;
+                const dynamicCount = moduleWords.filter(w => w.german && w.turkish).length;
+                const total = staticCount + dynamicCount;
+                return (
+                  <div className="flex items-center gap-2 text-xs font-semibold text-slate-400 dark:text-slate-500 bg-slate-50 dark:bg-indigo-950/20 border border-slate-200/50 dark:border-indigo-900/10 px-3 py-2 rounded-xl">
+                    <span>🎲</span>
+                    <span>Her alıştırma başladığında sorular karıştırılır.</span>
+                    <span className="ml-auto font-bold text-accentViolet-500">{total} soruluk havuz</span>
+                  </div>
+                );
+              })()}
+
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {[
                   {
                     emoji: "✏️",
                     title: "Boşluk Doldurma",
-                    desc: "Cümlelerdeki boşlukları doğru kelimelerle tamamlayın. Hızlı cevaplara +5 XP bonus!",
-                    onClick: () => { setActiveExercise("fill"); setQuizQuestions(exercisesData[moduleId]?.fillInBlank || []); setExerciseResult(null); },
-                    badge: "+XP Bonus",
+                    desc: `${(exercisesData[moduleId]?.fillInBlank?.length || 0) + moduleWords.length} soruluk havuzdan 12 rastgele soru. Hızlı cevaplara +5 XP bonus!`,
+                    onClick: startFillInBlank,
+                    badge: "12 Rastgele Soru",
                     badgeColor: "amber",
                     disabled: false,
                   },
                   {
                     emoji: "🎯",
                     title: "Çoktan Seçmeli",
-                    desc: "10 soruluk Almanca↔Türkçe kelime testi. Her doğru cevap +10 XP!",
+                    desc: `${moduleWords.length} kelimeden 10 rastgele Almanca↔Türkçe soru. Her seferinde farklı!`,
                     onClick: startMultipleChoice,
-                    badge: "10 Soru",
+                    badge: "10 Rastgele",
                     badgeColor: "violet",
                     disabled: false,
                   },
                   {
                     emoji: "🔗",
                     title: "Eşleştirme Kartları",
-                    desc: "Sol ve sağ sütundaki kelimeleri eşleştirin. 100% doğrulukta konfeti!",
+                    desc: "Kelimeleri eşleştirin. Her seferinde farklı kelimeler gelir. 100% doğrulukta konfeti!",
                     onClick: () => { setActiveExercise("match"); setExerciseResult(null); },
                     badge: "Eğlenceli",
                     badgeColor: "emerald",
@@ -462,9 +521,11 @@ export default function ModuleDetail({ progress, learnedWords, toggleWordLearned
                   {
                     emoji: "📖",
                     title: "Gramer Alıştırmaları",
-                    desc: grammarExerciseData ? "Fiil çekimleri ve gramer testleri." : "Bu modül için gramer alıştırması bulunmamaktadır.",
-                    onClick: () => { setActiveExercise("grammar"); setExerciseResult(null); },
-                    badge: grammarExerciseData ? "Özel Test" : "Yakında",
+                    desc: grammarExerciseData
+                      ? `Fiil çekimi, artikel, cümle sıralama — ${(grammarExerciseData.conjugations?.length || 0) + (grammarExerciseData.articles?.length || 0) + (grammarExerciseData.wordOrder?.length || 0)} soru, her seferinde karıştırılır.`
+                      : "Bu modül için gramer alıştırması bulunmamaktadır.",
+                    onClick: startGrammarExercise,
+                    badge: grammarExerciseData ? "Karıştırılmış" : "Yakında",
                     badgeColor: "sky",
                     disabled: !grammarExerciseData,
                   },
@@ -497,7 +558,7 @@ export default function ModuleDetail({ progress, learnedWords, toggleWordLearned
           {activeExercise === "fill" && <FillInBlank questions={quizQuestions} onComplete={handleExerciseComplete} />}
           {activeExercise === "choice" && <MultipleChoice questions={quizQuestions} onComplete={handleExerciseComplete} />}
           {activeExercise === "match" && <DragMatch words={moduleWords} onComplete={pts => handleExerciseComplete(pts)} />}
-          {activeExercise === "grammar" && <GrammarExercise grammarData={grammarExerciseData} onComplete={(score, total) => handleExerciseComplete(score, total)} />}
+          {activeExercise === "grammar" && activeGrammarData && <GrammarExercise grammarData={activeGrammarData} onComplete={(score, total) => handleExerciseComplete(score, total)} />}
 
           {/* Result Card */}
           {exerciseResult && (() => {
@@ -559,7 +620,12 @@ export default function ModuleDetail({ progress, learnedWords, toggleWordLearned
                       Alıştırmalara Dön
                     </button>
                     <button
-                      onClick={() => { if (activeExercise === "choice") startMultipleChoice(); else setExerciseResult(null); }}
+                      onClick={() => {
+                        if (activeExercise === "choice") startMultipleChoice();
+                        else if (activeExercise === "fill") startFillInBlank();
+                        else if (activeExercise === "grammar") startGrammarExercise();
+                        else setExerciseResult(null);
+                      }}
                       className="flex-1 py-3 bg-accentViolet-500 hover:bg-accentViolet-600 text-white font-extrabold rounded-xl text-sm shadow-md transition-all"
                     >
                       Yeniden Dene

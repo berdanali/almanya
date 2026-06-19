@@ -1,13 +1,13 @@
 // src/pages/Progress.jsx
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid } from "recharts";
-import { Star, Award, Trash2, CheckCircle2, ArrowRight, Play, RefreshCw, X } from "lucide-react";
+import { Star, Award, Trash2, CheckCircle2, ArrowRight, Play, RefreshCw, X, CalendarDays, TrendingDown } from "lucide-react";
 import { modules } from "../data/modules";
 import { words } from "../data/words";
 import BadgeCard from "../components/BadgeCard";
 import { capitalize } from "../utils/helpers";
 
-export default function Progress({ progress, learnedWords, wrongAnswers, points, streak, removeWrongAnswer, clearWrongAnswers }) {
+export default function Progress({ progress, learnedWords, wrongAnswers, points, streak, removeWrongAnswer, clearWrongAnswers, wordStats, studyDays }) {
   const [activeWrongWord, setActiveWrongWord] = useState(null);
   const [retryInput, setRetryInput] = useState("");
   const [retryChecked, setRetryChecked] = useState(false);
@@ -101,6 +101,42 @@ export default function Progress({ progress, learnedWords, wrongAnswers, points,
   // Vocabulary stats
   const totalWords = words.length;
   const learnedPercentage = Math.round((learnedWords.length / totalWords) * 100) || 0;
+
+  // Study calendar — last 35 days (5 weeks)
+  const calendarDays = useMemo(() => {
+    const days = [];
+    for (let i = 34; i >= 0; i--) {
+      const d = new Date();
+      d.setDate(d.getDate() - i);
+      const dateStr = d.toISOString().split("T")[0];
+      days.push({ date: dateStr, studied: (studyDays || []).includes(dateStr) });
+    }
+    return days;
+  }, [studyDays]);
+
+  const calendarWeeks = useMemo(() => {
+    const weeks = [];
+    for (let i = 0; i < calendarDays.length; i += 7) {
+      weeks.push(calendarDays.slice(i, i + 7));
+    }
+    return weeks;
+  }, [calendarDays]);
+
+  const studiedThisMonth = calendarDays.filter((d) => d.studied).length;
+
+  // Word stats — top 8 most wrong
+  const hardestWords = useMemo(() => {
+    if (!wordStats) return [];
+    return Object.entries(wordStats)
+      .filter(([, s]) => s.incorrect > 0)
+      .sort(([, a], [, b]) => b.incorrect - a.incorrect)
+      .slice(0, 8)
+      .map(([wordId, stat]) => {
+        const word = words.find((w) => w.id === wordId);
+        return word ? { word, stat } : null;
+      })
+      .filter(Boolean);
+  }, [wordStats]);
 
   // Custom tool-tip color
   const CustomTooltip = ({ active, payload }) => {
@@ -314,6 +350,105 @@ export default function Progress({ progress, learnedWords, wrongAnswers, points,
           </div>
         )}
       </div>
+
+      {/* Study Calendar */}
+      <div className="p-6 rounded-3xl bg-white dark:bg-darkNavy-900 border border-slate-200 dark:border-indigo-950/60 shadow-sm space-y-4">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <CalendarDays className="w-5 h-5 text-accentViolet-500" />
+            <h3 className="text-base font-extrabold text-slate-800 dark:text-slate-100">Çalışma Takvimi</h3>
+          </div>
+          <span className="text-xs font-black px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
+            Bu ay: {studiedThisMonth} gün
+          </span>
+        </div>
+        <p className="text-xs font-semibold text-slate-400 dark:text-slate-500">Son 5 hafta</p>
+
+        {/* Day labels */}
+        <div className="space-y-1.5">
+          <div className="grid grid-cols-7 gap-1.5 text-center">
+            {["Pzt", "Sal", "Çar", "Per", "Cum", "Cmt", "Paz"].map((d) => (
+              <div key={d} className="text-[9px] font-bold text-slate-400 uppercase">{d}</div>
+            ))}
+          </div>
+          {calendarWeeks.map((week, wi) => (
+            <div key={wi} className="grid grid-cols-7 gap-1.5">
+              {week.map((day) => (
+                <div
+                  key={day.date}
+                  title={day.date}
+                  className={`aspect-square rounded-md transition-all ${
+                    day.studied
+                      ? "bg-emerald-500 shadow-sm"
+                      : "bg-slate-100 dark:bg-indigo-950/40"
+                  }`}
+                />
+              ))}
+            </div>
+          ))}
+        </div>
+
+        <div className="flex items-center gap-3 pt-1">
+          <div className="flex items-center gap-1.5">
+            <div className="w-3 h-3 rounded-sm bg-slate-100 dark:bg-indigo-950/40" />
+            <span className="text-[10px] font-semibold text-slate-400">Çalışılmadı</span>
+          </div>
+          <div className="flex items-center gap-1.5">
+            <div className="w-3 h-3 rounded-sm bg-emerald-500" />
+            <span className="text-[10px] font-semibold text-slate-400">Çalışıldı</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Hardest Words */}
+      {hardestWords.length > 0 && (
+        <div className="p-6 rounded-3xl bg-white dark:bg-darkNavy-900 border border-slate-200 dark:border-indigo-950/60 shadow-sm space-y-4">
+          <div className="flex items-center gap-2">
+            <TrendingDown className="w-5 h-5 text-rose-500" />
+            <h3 className="text-base font-extrabold text-slate-800 dark:text-slate-100">En Çok Zorlanan Kelimeler</h3>
+          </div>
+          <p className="text-xs font-semibold text-slate-400 dark:text-slate-500">
+            Alıştırma ve kartlarda en çok yanlış yaptığınız kelimeler.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            {hardestWords.map(({ word, stat }) => {
+              const accuracy = stat.seen > 0 ? Math.round((stat.correct / stat.seen) * 100) : 0;
+              return (
+                <div
+                  key={word.id}
+                  className="p-4 rounded-2xl bg-slate-50 dark:bg-indigo-950/20 border border-slate-200/50 dark:border-indigo-900/10 flex items-center gap-4"
+                >
+                  <div className="flex-1 min-w-0 space-y-0.5">
+                    <div className="font-extrabold text-slate-800 dark:text-slate-100 text-sm">
+                      {word.artikel && (
+                        <span className={`text-xs mr-1 font-black uppercase ${
+                          word.artikel === "der" ? "text-blue-500" :
+                          word.artikel === "die" ? "text-rose-500" : "text-amber-500"
+                        }`}>{word.artikel}</span>
+                      )}
+                      {word.german}
+                    </div>
+                    <p className="text-xs text-slate-500 dark:text-slate-400">{word.turkish}</p>
+                    <div className="flex items-center gap-2 mt-1.5">
+                      <div className="flex-1 h-1 bg-slate-200 dark:bg-indigo-950/60 rounded-full overflow-hidden">
+                        <div
+                          className="h-full bg-emerald-500 rounded-full transition-all"
+                          style={{ width: `${accuracy}%` }}
+                        />
+                      </div>
+                      <span className="text-[10px] font-bold text-slate-400">{accuracy}%</span>
+                    </div>
+                  </div>
+                  <div className="text-center flex-shrink-0">
+                    <div className="text-lg font-black text-rose-500">{stat.incorrect}</div>
+                    <div className="text-[9px] font-bold text-slate-400 uppercase">yanlış</div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      )}
 
       {/* Retry Modal */}
       {activeWrongWord && (

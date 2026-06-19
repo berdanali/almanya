@@ -1,6 +1,7 @@
 // src/components/Flashcard.jsx
 import React, { useState } from "react";
 import { Check, X, RotateCw, BookOpen } from "lucide-react";
+import SpeakButton from "./SpeakButton";
 
 export default function Flashcard({ word, onResult }) {
   const [flipped, setFlipped] = useState(false);
@@ -56,9 +57,12 @@ export default function Flashcard({ word, onResult }) {
               )}
             </div>
 
-            <div className="flex items-center gap-1 text-slate-400 text-xs font-semibold">
-              <RotateCw className="w-3.5 h-3.5" />
-              <span>Çevirmek için tıkla</span>
+            <div className="flex items-center gap-3 text-slate-400 text-xs font-semibold">
+              <SpeakButton text={word.artikel ? `${word.artikel} ${word.german}` : word.german} />
+              <span className="flex items-center gap-1">
+                <RotateCw className="w-3.5 h-3.5" />
+                Çevirmek için tıkla
+              </span>
             </div>
           </div>
 

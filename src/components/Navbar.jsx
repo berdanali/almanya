@@ -1,118 +1,91 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Sun, Moon, Flame, BookOpen, Layers, Award, Menu, X, ShieldCheck, MessageCircle, BarChart2 } from "lucide-react";
-import XPBar from "./XPBar";
+import { Sun, Moon, Flame, BookOpen, Layers, BarChart2, Menu, X, ShieldCheck, GraduationCap } from "lucide-react";
 
 export default function Navbar({ username, streak, points, xp, onReset }) {
-  const [theme, setTheme] = useState(() => {
-    return localStorage.getItem("theme") || "light";
-  });
+  const [theme, setTheme] = useState(() => localStorage.getItem("theme") || "light");
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
-    if (theme === "dark") {
-      document.documentElement.classList.add("dark");
-      document.body.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-      document.body.classList.remove("dark");
-    }
+    document.documentElement.classList.toggle("dark", theme === "dark");
+    document.body.classList.toggle("dark", theme === "dark");
     localStorage.setItem("theme", theme);
   }, [theme]);
 
-  const toggleTheme = () => {
-    setTheme(theme === "light" ? "dark" : "light");
-  };
-
   const navLinks = [
-    { to: "/", label: "Panel", icon: Layers },
+    { to: "/", label: "Ana Sayfa", icon: Layers },
     { to: "/modules", label: "Kurslar", icon: BookOpen },
-    { to: "/dailylife", label: "Günlük Hayat", icon: MessageCircle },
-    { to: "/flashcards", label: "Kelime Kartları", icon: Award },
+    { to: "/goethe", label: "Sınav", icon: ShieldCheck, accent: true },
+    { to: "/flashcards", label: "Kelimeler", icon: GraduationCap },
     { to: "/progress", label: "İlerleme", icon: BarChart2 },
-    { to: "/goethe", label: "Goethe A1", icon: ShieldCheck, special: true },
   ];
 
   return (
-    <nav className="sticky top-0 z-50 bg-white/90 dark:bg-darkNavy-950/90 backdrop-blur-md shadow-sm border-b border-slate-200 dark:border-indigo-950/60 transition-colors duration-300">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+    <nav className="sticky top-0 z-50 bg-white/95 dark:bg-slate-950/95 backdrop-blur-sm border-b border-slate-200 dark:border-slate-800 transition-colors">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+        <div className="flex items-center justify-between h-14">
+
           {/* Logo */}
-          <div className="flex items-center gap-3">
-            <Link to="/" className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-lg bg-sky-600 flex items-center justify-center shadow-md">
-                <span className="text-white font-black text-xs">A1</span>
-              </div>
-              <span className="text-lg font-extrabold text-slate-800 dark:text-slate-100 hidden sm:block tracking-tight">
-                Almanca<span className="text-sky-600">Kursu</span>
-              </span>
-            </Link>
+          <Link to="/" className="flex items-center gap-2.5">
+            <div className="w-8 h-8 rounded-lg bg-indigo-600 flex items-center justify-center shadow-sm">
+              <span className="text-white font-black text-xs tracking-tight">A1</span>
+            </div>
+            <span className="text-base font-black text-slate-900 dark:text-slate-100 tracking-tight hidden sm:block">
+              Almanca<span className="text-indigo-600">Kursu</span>
+            </span>
+          </Link>
 
-            {/* XP Bar (compact, desktop only) */}
-            {username && (
-              <div className="hidden lg:block w-48">
-                <XPBar xp={xp || 0} compact />
-              </div>
-            )}
-          </div>
-
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-2">
-            {navLinks.map((link) => {
-              const Icon = link.icon;
-              const isActive = location.pathname === link.to;
-              const baseClass = "flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-bold transition-all duration-200";
-              const activeClass = link.special 
-                ? "bg-amber-500 text-white shadow-md" 
-                : "bg-slate-800 dark:bg-white text-white dark:text-slate-900 shadow-sm";
-              const inactiveClass = link.special 
-                ? "text-amber-600 dark:text-amber-500 hover:bg-amber-50 dark:hover:bg-amber-900/20" 
-                : "text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-indigo-950/40 hover:text-slate-900 dark:hover:text-white";
-
+          {/* Desktop Nav */}
+          <div className="hidden md:flex items-center gap-1">
+            {navLinks.map(({ to, label, icon: Icon, accent }) => {
+              const active = location.pathname === to;
               return (
                 <Link
-                  key={link.to}
-                  to={link.to}
-                  className={`${baseClass} ${isActive ? activeClass : inactiveClass}`}
+                  key={to}
+                  to={to}
+                  className={`flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-sm font-semibold transition-all ${
+                    active
+                      ? accent
+                        ? "bg-indigo-600 text-white shadow-sm"
+                        : "bg-slate-900 dark:bg-white text-white dark:text-slate-900 shadow-sm"
+                      : accent
+                        ? "text-indigo-600 dark:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-950/30"
+                        : "text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white"
+                  }`}
                 >
                   <Icon className="w-4 h-4" />
-                  <span>{link.label}</span>
+                  {label}
                 </Link>
               );
             })}
           </div>
 
-          {/* User Stats & Utilities */}
-          <div className="flex items-center space-x-2">
+          {/* Right: streak + theme + mobile */}
+          <div className="flex items-center gap-2">
             {username && (
-              <div className="flex items-center gap-2">
-                {/* Streak */}
-                <div className="flex items-center gap-1 bg-amber-500/10 text-amber-600 dark:text-amber-400 px-2.5 py-1 rounded-full text-xs font-bold border border-amber-500/20">
-                  <Flame className="w-3.5 h-3.5 fill-amber-500" />
-                  <span>{streak}g</span>
+              <>
+                <div className="flex items-center gap-1 bg-amber-50 dark:bg-amber-950/30 border border-amber-200/60 dark:border-amber-800/40 px-2.5 py-1.5 rounded-lg text-xs font-bold text-amber-600 dark:text-amber-400">
+                  <Flame className="w-3.5 h-3.5 fill-amber-500 text-amber-500" />
+                  <span>{streak}</span>
                 </div>
-
-                {/* Avatar */}
-                <div className="hidden sm:flex w-8 h-8 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 text-white items-center justify-center font-bold text-sm shadow-sm border-2 border-white/20">
-                  {username[0].toUpperCase()}
+                <div className="hidden sm:flex w-7 h-7 rounded-full bg-gradient-to-br from-indigo-500 to-violet-600 text-white items-center justify-center font-black text-xs">
+                  {username[0]?.toUpperCase()}
                 </div>
-              </div>
+              </>
             )}
 
-            {/* Dark Mode Toggle */}
             <button
-              onClick={toggleTheme}
-              className="p-2 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-darkNavy-900 dark:hover:bg-indigo-950/60 border border-slate-200/40 dark:border-indigo-800/30 text-slate-600 dark:text-slate-300 transition-colors"
-              aria-label="Tema değiştir"
+              onClick={() => setTheme(t => t === "light" ? "dark" : "light")}
+              className="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors"
+              aria-label="Tema"
             >
               {theme === "dark" ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4" />}
             </button>
 
-            {/* Mobile Menu Button */}
             <button
-              onClick={() => setMenuOpen(!menuOpen)}
-              className="p-2 md:hidden rounded-lg hover:bg-slate-100 dark:hover:bg-indigo-950/40 text-slate-600 dark:text-slate-300"
+              onClick={() => setMenuOpen(v => !v)}
+              className="p-2 md:hidden rounded-lg text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
             >
               {menuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
@@ -120,37 +93,32 @@ export default function Navbar({ username, streak, points, xp, onReset }) {
         </div>
       </div>
 
-      {/* Mobile Navigation Drawer */}
+      {/* Mobile drawer */}
       {menuOpen && (
-        <div className="md:hidden glass border-t border-slate-200/50 dark:border-indigo-900/40 animate-in slide-in-from-top duration-200">
-          <div className="px-3 pt-3 pb-4 space-y-1">
-            {username && (
-              <div className="px-3 py-3 mb-2">
-                <XPBar xp={xp || 0} />
-              </div>
-            )}
-            {navLinks.map((link) => {
-              const Icon = link.icon;
-              const isActive = location.pathname === link.to;
+        <div className="md:hidden border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950">
+          <div className="px-3 py-3 space-y-1">
+            {navLinks.map(({ to, label, icon: Icon, accent }) => {
+              const active = location.pathname === to;
               return (
                 <Link
-                  key={link.to}
-                  to={link.to}
+                  key={to}
+                  to={to}
                   onClick={() => setMenuOpen(false)}
-                  className={`flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold transition-all ${
-                    isActive
-                      ? "bg-accentViolet-500 text-white"
-                      : "text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-indigo-950/40"
+                  className={`flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-semibold transition-all ${
+                    active
+                      ? "bg-indigo-600 text-white"
+                      : "text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"
                   }`}
                 >
-                  <Icon className="w-5 h-5" />
-                  <span>{link.label}</span>
+                  <Icon className="w-4 h-4" />
+                  {label}
                 </Link>
               );
             })}
+
             {username && (
-              <div className="pt-3 border-t border-slate-200/30 dark:border-indigo-900/30 px-4 flex items-center justify-between text-xs text-slate-500">
-                <span className="font-bold">{username}</span>
+              <div className="pt-3 px-4 flex items-center justify-between border-t border-slate-100 dark:border-slate-800 mt-2">
+                <span className="text-xs font-bold text-slate-500">{username}</span>
                 <button
                   onClick={() => {
                     if (window.confirm("Tüm ilerlemenizi sıfırlamak istediğinize emin misiniz?")) {
@@ -158,7 +126,7 @@ export default function Navbar({ username, streak, points, xp, onReset }) {
                       setMenuOpen(false);
                     }
                   }}
-                  className="text-rose-500 hover:underline font-semibold"
+                  className="text-xs text-rose-500 hover:underline font-semibold"
                 >
                   Sıfırla
                 </button>

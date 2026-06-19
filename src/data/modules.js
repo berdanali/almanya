@@ -710,6 +710,669 @@ export const modules = [
       { de: "Ich habe meinen Reisepass verloren.", tr: "Pasaportumu kaybettim." },
       { de: "Wo ist die nächste Polizeiwache?", tr: "En yakın karakol nerede?" },
       { de: "Ich brauche einen Dolmetscher.", tr: "Tercümana ihtiyacım var." },
+    ],
+    level: "A1"
+  },
+
+  // ═══════════════════════════════════════════════════════════
+  //                        A2 KURS
+  // ═══════════════════════════════════════════════════════════
+
+  {
+    id: 13,
+    level: "A2",
+    titleDE: "Perfekt",
+    titleTR: "Geçmiş Zaman (Perfekt)",
+    icon: "⏮️",
+    color: "#7c3aed",
+    description: "Almanca'da geçmişte yaşanan olayları anlatmak için kullanılan en yaygın zaman: haben/sein + Partizip II.",
+    grammar: {
+      title: "Perfekt Kuruluşu: haben / sein + Partizip II",
+      notes: [
+        "Perfekt, Almanca'da konuşma dilindeki geçmiş zamandır. İki bileşenden oluşur:\n1) haben veya sein fiilinin çekimi (2. sıraya gider)\n2) Ana fiilin Partizip II hali (cümlenin SONUNA gider)\n\nÖrnek: 'Ich habe Deutsch gelernt.' / 'Ich bin nach Berlin gefahren.'",
+        "Zayıf (düzenli) fiillerde Partizip II: ge- + fiil kökü + -(e)t\n- lernen → gelernt\n- machen → gemacht\n- kaufen → gekauft\n- arbeiten → gearbeitet (ekstra -e- gelir)\n- spielen → gespielt",
+        "Güçlü (düzensiz) fiillerde Partizip II: ge- + (değişmiş kök) + -en → Ezber gerekir!\n- gehen → gegangen\n- essen → gegessen\n- trinken → getrunken\n- fahren → gefahren\n- schreiben → geschrieben\n- sprechen → gesprochen",
+        "HABEN mi, SEIN mi?\n✅ SEIN: Hareket/yer değiştirme fiilleri (gehen, fahren, fliegen, kommen, laufen) ve durum değişimi fiilleri (aufwachen, einschlafen, sterben, werden).\n✅ HABEN: Geri kalan tüm fiiller (transitif fiiller, reflexive, çoğu intransitif fiil).\n- 'Ich bin gegangen.' (yürüyerek gittim — hareket)\n- 'Ich habe gegessen.' (yedim — nesne alabilen fiil)",
+        "Ayrılabilen fiillerde Partizip II: ge- ön eke eklenir!\n- aufmachen → aufgemacht\n- anrufen → angerufen\n- einladen → eingeladen",
+        "ge- ÖN EKİ GELMEZ: Yabancı kökenli fiiller (-ieren) ve ayrılmayan ön ekli fiiller:\n- telefonieren → telefoniert (ge- yok!)\n- fotografieren → fotografiert\n- besuchen → besucht (be- ayrılmaz)"
+      ]
+    },
+    grammarTables: [
+      {
+        title: "haben / sein Yardımcı Fiili Seçimi",
+        headers: ["Kural", "Fiil Örneği", "Partizip II", "Perfekt Cümlesi"],
+        rows: [
+          ["SEIN: Hareket", "gehen", "gegangen", "Ich bin gegangen."],
+          ["SEIN: Hareket", "fahren", "gefahren", "Er ist gefahren."],
+          ["SEIN: Durum değişimi", "aufwachen", "aufgewacht", "Sie ist aufgewacht."],
+          ["HABEN: Geçişli", "essen", "gegessen", "Ich habe gegessen."],
+          ["HABEN: Çoğu fiil", "lernen", "gelernt", "Wir haben gelernt."],
+          ["HABEN: -ieren", "telefonieren", "telefoniert", "Er hat telefoniert."],
+        ]
+      },
+      {
+        title: "En Sık Kullanılan Güçlü Fiiller - Partizip II",
+        headers: ["Infinitiv", "Partizip II", "Türkçe", "Yardımcı"],
+        rows: [
+          ["gehen", "gegangen", "gitmek", "sein"],
+          ["kommen", "gekommen", "gelmek", "sein"],
+          ["fahren", "gefahren", "gitmek (araçla)", "sein"],
+          ["fliegen", "geflogen", "uçmak", "sein"],
+          ["laufen", "gelaufen", "koşmak/yürümek", "sein"],
+          ["essen", "gegessen", "yemek", "haben"],
+          ["trinken", "getrunken", "içmek", "haben"],
+          ["schreiben", "geschrieben", "yazmak", "haben"],
+          ["lesen", "gelesen", "okumak", "haben"],
+          ["sehen", "gesehen", "görmek", "haben"],
+          ["schlafen", "geschlafen", "uyumak", "haben"],
+          ["sprechen", "gesprochen", "konuşmak", "haben"],
+          ["nehmen", "genommen", "almak", "haben"],
+          ["geben", "gegeben", "vermek", "haben"],
+          ["finden", "gefunden", "bulmak", "haben"],
+        ]
+      }
+    ],
+    culturalNote: "🇩🇪 Almanca'da konuşma dilinde geçmiş olaylar neredeyse yalnızca Perfekt ile anlatılır. 'Gestern habe ich Fußball gespielt.' (Dün futbol oynadım.) Präteritum ise ağırlıklı olarak yazılı dilde ve edebiyatta kullanılır. Günlük hayatta birisine 'Was hast du gestern gemacht?' diye sorabilirsiniz.",
+    annaTip: "💡 Anna'nın İpucu: 'sein' mi 'haben' mı sorusunda en iyi kural: Konuyla birlikte 'nereye?' veya 'nereye gitti?' sorusunu sorabiliyorsanız → sein kullanın! 'Ich bin ins Kino gegangen.' (Sinemaya gittim — hareket). 'Ich habe einen Film gesehen.' (Film izledim — hareket yok).",
+    commonMistakes: [
+      "❌ 'Ich habe gegangen.' → gehen hareketi gösterir, sein alır!",
+      "✅ 'Ich bin gegangen.' deyin.",
+      "❌ 'Ich habe gegessen das Brot.' → Partizip II SONA gider!",
+      "✅ 'Ich habe das Brot gegessen.' deyin.",
+      "❌ telefonieren → 'getelefoniert' → -ieren fiilleri ge- almaz!",
+      "✅ 'Ich habe telefoniert.' deyin.",
+    ],
+    examples: [
+      { de: "Gestern habe ich viel Deutsch gelernt.", tr: "Dün çok Almanca öğrendim." },
+      { de: "Wir sind mit dem Zug nach München gefahren.", tr: "Münih'e trenle gittik." },
+      { de: "Hast du schon gefrühstückt?", tr: "Kahvaltı yaptın mı?" },
+      { de: "Sie hat ihre Freundin angerufen.", tr: "Arkadaşını aradı." },
+      { de: "Ich bin heute früh aufgewacht.", tr: "Bugün erken uyandım." },
+    ]
+  },
+
+  {
+    id: 14,
+    level: "A2",
+    titleDE: "Präteritum",
+    titleTR: "Yazılı Geçmiş Zaman",
+    icon: "📜",
+    color: "#0284c7",
+    description: "Yazılı dil, gazete, edebiyat ve resmi anlatımda kullanılan geçmiş zaman: war, hatte ve modal fiillerin Präteritum çekimi.",
+    grammar: {
+      title: "Präteritum: sein → war | haben → hatte | Modal Fiiller",
+      notes: [
+        "Präteritum ağırlıklı olarak yazılı dilde kullanılır: gazeteler, kitaplar, makaleler ve resmi belgeler.\nKonuşma dilinde Perfekt tercih edilir, ancak 'sein' ve 'haben' ile modal fiiller her iki dilde de Präteritum ile kullanılabilir:\n- 'Ich war gestern krank.' (Dün hastaydım.) — doğal, Perfekt kullanılmaz!",
+        "sein → war çekimi:\n- ich war / du warst / er-sie-es war\n- wir waren / ihr wart / sie-Sie waren",
+        "haben → hatte çekimi:\n- ich hatte / du hattest / er-sie-es hatte\n- wir hatten / ihr hattet / sie-Sie hatten",
+        "Modal fiillerin Präteritum çekimi (konuşma dilinde de yaygın!):\n- können → konnte (yapabiliyordu)\n- müssen → musste (zorunda idi)\n- wollen → wollte (istedi)\n- dürfen → durfte (izni vardı)\n- sollen → sollte (yapması gerekirdi)\n- mögen → mochte (seviyordu)",
+        "Zayıf fiillerde Präteritum: fiil kökü + -te/-test/-te/-ten/-tet/-ten\n- lernen → lernte, lerntest, lernte, lernten...\n- arbeiten → arbeitete (ekstra -e-)\nGüçlü fiiller Präteritum için kök değiştirir — bunlar ayrıca ezberlenmeli:\n- gehen → ging, kommen → kam, sehen → sah, fahren → fuhr"
+      ]
+    },
+    grammarTables: [
+      {
+        title: "sein ve haben — Präteritum Çekimi",
+        headers: ["Kişi", "sein (Präteritum)", "haben (Präteritum)"],
+        rows: [
+          ["ich", "war", "hatte"],
+          ["du", "warst", "hattest"],
+          ["er / sie / es", "war", "hatte"],
+          ["wir", "waren", "hatten"],
+          ["ihr", "wart", "hattet"],
+          ["sie / Sie", "waren", "hatten"],
+        ]
+      },
+      {
+        title: "Modal Fiiller — Präteritum Çekimi",
+        headers: ["Modal Fiil", "ich/er/sie", "du", "Türkçe"],
+        rows: [
+          ["können", "konnte", "konntest", "yapabilmek"],
+          ["müssen", "musste", "musstest", "zorunda olmak"],
+          ["wollen", "wollte", "wolltest", "istemek"],
+          ["dürfen", "durfte", "durftest", "izinli olmak"],
+          ["sollen", "sollte", "solltest", "yapması söylenmek"],
+          ["mögen", "mochte", "mochtest", "sevmek / istemek"],
+        ]
+      },
+      {
+        title: "Sık Kullanılan Güçlü Fiiller — Präteritum",
+        headers: ["Infinitiv", "Präteritum (ich/er)", "Türkçe"],
+        rows: [
+          ["gehen", "ging", "gitmek"],
+          ["kommen", "kam", "gelmek"],
+          ["fahren", "fuhr", "gitmek (araçla)"],
+          ["sehen", "sah", "görmek"],
+          ["schreiben", "schrieb", "yazmak"],
+          ["sprechen", "sprach", "konuşmak"],
+          ["essen", "aß", "yemek"],
+          ["nehmen", "nahm", "almak"],
+          ["stehen", "stand", "durmak"],
+          ["wissen", "wusste", "bilmek"],
+        ]
+      }
+    ],
+    culturalNote: "🇩🇪 Alman gazetelerini ve edebiyatını okurken Präteritum ile sürekli karşılaşırsınız. 'Der Kanzler sagte...' (Başbakan dedi ki...), 'Es war einmal...' (Bir zamanlar...) gibi ifadeler Präteritum'dur. Grimm masallarını Almanca okuyorsanız — hepsi Präteritum'dadır!",
+    annaTip: "💡 Anna'nın İpucu: Modal fiillerin Präteritum'u konuşmada da çok kullanılır! 'Ich musste arbeiten.' (Çalışmak zorundaydım.) ve 'Ich konnte nicht kommen.' (Gelemedim.) — bunları doğal şekilde kullanabilmek A2'nin kilit noktalarındandır.",
+    commonMistakes: [
+      "❌ 'Ich war gegangen.' → war + Partizip II olmaz! Präteritum tek başına yeterli.",
+      "✅ 'Ich ging.' veya 'Ich bin gegangen.' deyin.",
+      "❌ Modal Präteritum'a Umlaut eklemek: 'ich müsste' (var ama Konjunktiv II, farklı anlam!)",
+      "✅ Präteritum: 'ich musste' (zorunda idim), Konjunktiv II: 'ich müsste' (zorunda olurdum).",
+    ],
+    examples: [
+      { de: "Als Kind war ich sehr schüchtern.", tr: "Çocukken çok utangaçtım." },
+      { de: "Wir hatten früher kein Auto.", tr: "Eskiden arabamız yoktu." },
+      { de: "Er konnte nicht kommen, weil er krank war.", tr: "Hasta olduğu için gelemedi." },
+      { de: "Gestern musste ich lange arbeiten.", tr: "Dün uzun süre çalışmak zorunda kaldım." },
+      { de: "Es war einmal ein König...", tr: "Bir zamanlar bir kral vardı..." },
+    ]
+  },
+
+  {
+    id: 15,
+    level: "A2",
+    titleDE: "Adjektiv-Deklination",
+    titleTR: "Sıfat Çekimi",
+    icon: "✏️",
+    color: "#059669",
+    description: "Almanca sıfatları isimden önce kullanıldığında belirli, belirsiz veya artikelsiz çekime göre son ek alır.",
+    grammar: {
+      title: "Sıfat Son Ekleri: Belirli / Belirsiz / Artikelsiz",
+      notes: [
+        "Almanca'da sıfat ismin önüne geldiğinde son ek (Endung) alır. Hangi eki alacağı 3 faktöre bağlıdır:\n1) Hangi artikel var? (der/die/das, ein/eine, veya artikelsiz)\n2) Hangi hal? (Nominativ, Akkusativ, Dativ)\n3) Cinsiyeti? (maskulin, feminin, neutral, plural)",
+        "Belirli Artikel (der/die/das) sonrası 'zayıf çekim':\n- Nominativ: -e (der alte Mann, die alte Frau, das alte Kind)\n- Akkusativ: Maskulin -en; diğerleri -e\n- Dativ: Hepsi -en",
+        "Belirsiz Artikel (ein/eine/kein) sonrası 'karışık çekim':\n- Nominativ: Maskulin -er, Feminin -e, Nötr -es\n- Akkusativ: Maskulin -en, Feminin -e, Nötr -es\n- Dativ: Hepsi -en",
+        "Artikelsiz (güçlü çekim) — çoğunlukla çoğulda:\n- Sıfat artikelin rolünü üstlenir ve güçlü ek alır:\n- kalter Kaffee, frisches Brot, gute Wünsche"
+      ]
+    },
+    grammarTables: [
+      {
+        title: "Belirli Artikel Sonrası Sıfat Çekimi (Zayıf)",
+        headers: ["Hal", "Maskulin (m)", "Feminin (f)", "Nötr (n)", "Çoğul (pl)"],
+        rows: [
+          ["Nominativ", "der alt-e Mann", "die alt-e Frau", "das alt-e Kind", "die alt-en Kinder"],
+          ["Akkusativ", "den alt-en Mann", "die alt-e Frau", "das alt-e Kind", "die alt-en Kinder"],
+          ["Dativ", "dem alt-en Mann", "der alt-en Frau", "dem alt-en Kind", "den alt-en Kindern"],
+        ]
+      },
+      {
+        title: "Belirsiz Artikel (ein/eine) Sonrası Sıfat Çekimi (Karışık)",
+        headers: ["Hal", "Maskulin (m)", "Feminin (f)", "Nötr (n)"],
+        rows: [
+          ["Nominativ", "ein alt-er Mann", "eine alt-e Frau", "ein alt-es Kind"],
+          ["Akkusativ", "einen alt-en Mann", "eine alt-e Frau", "ein alt-es Kind"],
+          ["Dativ", "einem alt-en Mann", "einer alt-en Frau", "einem alt-en Kind"],
+        ]
+      },
+      {
+        title: "Sık Kullanılan Sıfatlar",
+        headers: ["Almanca", "Türkçe", "Zıttı"],
+        rows: [
+          ["groß", "büyük", "klein"],
+          ["alt", "eski/yaşlı", "neu/jung"],
+          ["teuer", "pahalı", "günstig/billig"],
+          ["schön", "güzel", "hässlich"],
+          ["schnell", "hızlı", "langsam"],
+          ["warm", "sıcak", "kalt"],
+          ["hell", "aydınlık", "dunkel"],
+          ["laut", "gürültülü", "leise"],
+          ["schwer", "ağır/zor", "leicht"],
+          ["sauber", "temiz", "schmutzig"],
+        ]
+      }
+    ],
+    culturalNote: "🇩🇪 Almanca sıfat çekimi yabancılar için en zorlu konulardan biridir. Almanlar da bu kuralları otomatik olarak konuşurken uygular — onlar için 'doğal hissettiren' şey. Siz önce en çok kullanılan kombinasyonlara odaklanın: 'ein gutes Buch', 'ein schöner Tag', 'das neue Haus'. Bunları tekrarlayarak başlayın.",
+    annaTip: "💡 Anna'nın İpucu: Sıfat çekimini ezberlemek yerine sık geçen kalıpları bütün olarak öğrenin: 'guten Morgen!', 'ein schönes Wochenende!', 'mit dem nächsten Zug'. Kalıplar zamanla otomatikleşir!",
+    commonMistakes: [
+      "❌ 'ein alt Mann' → belirsiz artikel sonrası maskulin nominativ -er alır!",
+      "✅ 'ein alter Mann' deyin.",
+      "❌ 'der neues Auto' → nötr 'das' sonrası nominativ sıfat -e alır.",
+      "✅ 'das neue Auto' deyin.",
+    ],
+    examples: [
+      { de: "Ich suche eine günstige Wohnung.", tr: "Ucuz bir daire arıyorum." },
+      { de: "Er hat ein neues Auto gekauft.", tr: "Yeni bir araba satın aldı." },
+      { de: "Mit dem nächsten Bus kommen wir pünktlich an.", tr: "Bir sonraki otobüsle tam zamanında varırız." },
+      { de: "Das ist ein interessantes Buch über deutsche Geschichte.", tr: "Bu, Alman tarihi hakkında ilginç bir kitap." },
+      { de: "Ich trinke lieber heißen Tee als kalten Kaffee.", tr: "Soğuk kahveden çok sıcak çay içmeyi tercih ederim." },
+    ]
+  },
+
+  {
+    id: 16,
+    level: "A2",
+    titleDE: "Komparativ & Superlativ",
+    titleTR: "Karşılaştırma ve Üstünlük",
+    icon: "📊",
+    color: "#d97706",
+    description: "Sıfat ve zarfları karşılaştırmak için kullanılan Komparativ (-er) ve en üstünü ifade eden Superlativ (am ...-sten) yapıları.",
+    grammar: {
+      title: "Karşılaştırma: schnell → schneller → am schnellsten",
+      notes: [
+        "Komparativ: Sıfat + -er (İngilizce'deki -er gibi)\n- schnell → schneller (daha hızlı)\n- klein → kleiner (daha küçük)\n- billig → billiger (daha ucuz)\nKarşılaştırırken 'als' (den/dan, -den daha) kullanılır:\n- 'Er ist größer als ich.' (O benden daha uzun.)",
+        "Umlaut alan düzensiz Komparatifler (ezber gerekli!):\n- alt → älter, jung → jünger, groß → größer, warm → wärmer, kalt → kälter, lang → länger, kurz → kürzer, dumm → dümmer",
+        "Superlativ: am + Sıfat + -(e)sten\n- schnell → am schnellsten (en hızlı)\n- groß → am größten\n- alt → am ältesten (-est: fiil kökü t/d/s/z ile biterse)\nYükleme takısız süperlativ: das schnellste Auto, der älteste Mensch",
+        "Tamamen Düzensiz Karşılaştırmalar (zorunlu ezber!):\n- gut → besser → am besten\n- viel → mehr → am meisten\n- gern → lieber → am liebsten\n- hoch → höher → am höchsten",
+        "'Genauso...wie' (aynı kadar...): 'Er ist genauso groß wie ich.' (O benimle aynı boyda.)\n'Nicht so...wie' (o kadar...değil): 'Das ist nicht so teuer wie das andere.' (Bu, diğeri kadar pahalı değil.)"
+      ]
+    },
+    grammarTables: [
+      {
+        title: "Düzenli Karşılaştırmalar",
+        headers: ["Grundform", "Komparativ", "Superlativ", "Türkçe"],
+        rows: [
+          ["schnell", "schneller", "am schnellsten", "hızlı → daha hızlı → en hızlı"],
+          ["klein", "kleiner", "am kleinsten", "küçük"],
+          ["billig", "billiger", "am billigsten", "ucuz"],
+          ["lang", "länger", "am längsten", "uzun (boylu değil)"],
+          ["kurz", "kürzer", "am kürzesten", "kısa"],
+          ["warm", "wärmer", "am wärmsten", "sıcak"],
+          ["kalt", "kälter", "am kältesten", "soğuk"],
+          ["jung", "jünger", "am jüngsten", "genç"],
+          ["alt", "älter", "am ältesten", "yaşlı/eski"],
+          ["groß", "größer", "am größten", "büyük/uzun"],
+        ]
+      },
+      {
+        title: "Tamamen Düzensiz Karşılaştırmalar",
+        headers: ["Grundform", "Komparativ", "Superlativ", "Türkçe"],
+        rows: [
+          ["gut", "besser", "am besten", "iyi → daha iyi → en iyi"],
+          ["viel", "mehr", "am meisten", "çok → daha çok → en çok"],
+          ["gern", "lieber", "am liebsten", "seve seve → tercihan → en çok"],
+          ["hoch", "höher", "am höchsten", "yüksek"],
+        ]
+      }
+    ],
+    culturalNote: "🇩🇪 Almanya'da 'besser' kelimesi çok sık duyulur: 'Das geht besser!' (Bu daha iyi olur!), 'Besser spät als nie!' (Geç kalmak hiç gelmemekten iyidir!). Karşılaştırma yapıları günlük hayatta, reklamlarda ve haberlerde çok yaygındır. 'Das beste Auto', 'die günstigste Option' gibi süperlativler her yerde karşınıza çıkar.",
+    annaTip: "💡 Anna'nın İpucu: 'gut-besser-am besten' üçlüsünü mutlaka ezberleyin — bu kelimelerin benzer kökleri yoktur (suppletif). Aynı şey 'viel-mehr-am meisten' ve 'gern-lieber-am liebsten' için de geçerlidir. Bu üç çifti öğrenin ve A2 sınavında şaşırtmayacaksınız!",
+    commonMistakes: [
+      "❌ 'mehr gut' → Almanca'da 'more' + sıfat yapısı yoktur!",
+      "✅ 'besser' (gut'un komparatividir). 'Mein Deutsch wird besser.' deyin.",
+      "❌ 'als' yerine 'wie' kullanmak: 'Er ist größer wie ich.'",
+      "✅ Komparativde 'als': 'Er ist größer als ich.' Eşitlikte 'wie': 'Er ist so groß wie ich.'",
+    ],
+    examples: [
+      { de: "München ist teurer als Berlin.", tr: "Münih, Berlin'den daha pahalı." },
+      { de: "Ich spreche lieber Deutsch als Englisch.", tr: "İngilizce'den çok Almanca konuşmayı tercih ederim." },
+      { de: "Welche Route ist am schnellsten?", tr: "Hangi güzergah en hızlıdır?" },
+      { de: "Das neue Modell ist besser und günstiger.", tr: "Yeni model daha iyi ve daha ucuz." },
+      { de: "Sie singt am besten in der ganzen Klasse.", tr: "Sınıfın en iyi şarkı söyleyeni o." },
+    ]
+  },
+
+  {
+    id: 17,
+    level: "A2",
+    titleDE: "Reflexive Verben",
+    titleTR: "Dönüşlü Fiiller",
+    icon: "🪞",
+    color: "#be185d",
+    description: "Öznenin hem yapan hem de etkilenen olduğu dönüşlü fiiller: sich waschen, sich freuen, sich bewerben.",
+    grammar: {
+      title: "Dönüşlü Zamirler (Reflexivpronomen) ve sich Fiilleri",
+      notes: [
+        "Dönüşlü fiiller 'sich' ön eki ile sözlükte gösterilir. 'Sich' (kendini, kendine) zamiri özneye göre değişir:\n- ich wasche mich (kendimi yıkıyorum)\n- du wäschst dich\n- er/sie/es wäscht sich\n- wir waschen uns\n- ihr wascht euch\n- sie/Sie waschen sich",
+        "Gerçek dönüşlü fiiller: Fiil hem özne hem nesne aynı kişi:\n- sich waschen (kendini yıkamak)\n- sich kämmen (saçını taramak)\n- sich anziehen (giyinmek)\n- sich hinsetzen (oturmak)\n- sich hinlegen (yatmak)",
+        "Sözde dönüşlü fiiller: 'sich' olmadan farklı anlam veya anlamsız:\n- sich freuen (sevincini duymak → 'Ich freue mich!' = Çok sevindim!)\n- sich ärgern (sinirlenmek)\n- sich beeilen (acele etmek)\n- sich erinnern an + Akkusativ (hatırlamak)\n- sich interessieren für (ilgi duymak)\n- sich bewerben um (başvurmak)",
+        "Dativli sich: Nesne ayrı varsa, sich Dativ alır:\n- Ich wasche mir die Hände. (Ellerimi yıkıyorum — mir = kendime)\n- Er putzt sich die Zähne. (Dişlerini fırçalıyor)"
+      ]
+    },
+    grammarTables: [
+      {
+        title: "Dönüşlü Zamirler Tablosu",
+        headers: ["Kişi", "Akkusativ (direkt)", "Dativ (dolaylı)"],
+        rows: [
+          ["ich", "mich", "mir"],
+          ["du", "dich", "dir"],
+          ["er / sie / es", "sich", "sich"],
+          ["wir", "uns", "uns"],
+          ["ihr", "euch", "euch"],
+          ["sie / Sie", "sich", "sich"],
+        ]
+      },
+      {
+        title: "Temel Dönüşlü Fiiller",
+        headers: ["Fiil", "Türkçe", "Örnek Cümle"],
+        rows: [
+          ["sich waschen", "yıkanmak", "Ich wasche mich jeden Morgen."],
+          ["sich anziehen", "giyinmek", "Er zieht sich schnell an."],
+          ["sich setzen", "oturmak", "Bitte setzen Sie sich!"],
+          ["sich freuen", "sevinmek", "Ich freue mich sehr!"],
+          ["sich ärgern", "sinirlenMek", "Sie ärgert sich über den Stau."],
+          ["sich beeilen", "acele etmek", "Beeil dich, wir sind spät!"],
+          ["sich erholen", "dinlenmek", "Ich erhole mich im Urlaub."],
+          ["sich vorstellen", "kendini tanıtmak / hayal etmek", "Ich stelle mich vor."],
+          ["sich interessieren für", "ilgilenmek", "Ich interessiere mich für Musik."],
+          ["sich erinnern an", "hatırlamak", "Ich erinnere mich an die Schule."],
+        ]
+      }
+    ],
+    culturalNote: "🇩🇪 'Sich vorstellen' fiilinin iki anlamı var: kendini tanıtmak VE hayal etmek. 'Ich stelle mich vor.' (Kendimi tanıtıyorum) — iş görüşmelerinde çok kullanılır. 'Ich kann mir nicht vorstellen...' (Hayal edemiyorum...) — tamamen farklı anlam! Almanca'da bağlamın ne kadar önemli olduğuna güzel bir örnek.",
+    annaTip: "💡 Anna'nın İpucu: 'sich beeilen' (acele etmek) günlük hayatta çok sık duyulur: 'Beeil dich!' (Acele et!), 'Wir müssen uns beeilen!' (Acele etmeliyiz!). Saatin sıkıştığı her durumda işe yarar!",
+    commonMistakes: [
+      "❌ 'Ich freue.' → sich fiilleri sich olmadan kullanılamaz!",
+      "✅ 'Ich freue mich.' deyin.",
+      "❌ 'Ich wasche mich die Hände.' → Ayrı nesne varsa Dativ kullanılır!",
+      "✅ 'Ich wasche mir die Hände.' deyin.",
+    ],
+    examples: [
+      { de: "Ich freue mich auf den Urlaub!", tr: "Tatili dört gözle bekliyorum!" },
+      { de: "Sie interessiert sich sehr für Kunst.", tr: "Sanatla çok ilgileniyor." },
+      { de: "Bitte setzen Sie sich, der Arzt kommt gleich.", tr: "Lütfen oturun, doktor hemen geliyor." },
+      { de: "Er ärgert sich über den Lärm der Nachbarn.", tr: "Komşuların gürültüsüne sinirleniyor." },
+      { de: "Wir müssen uns beeilen, der Zug fährt in 5 Minuten ab!", tr: "Acele etmeliyiz, tren 5 dakikaya kalkıyor!" },
+    ]
+  },
+
+  {
+    id: 18,
+    level: "A2",
+    titleDE: "Nebensätze",
+    titleTR: "Yan Cümleler ve Bağlaçlar",
+    icon: "🔗",
+    color: "#0891b2",
+    description: "weil, dass, wenn, ob, als, obwohl ve diğer bağlaçlarla kurulan yan cümleler — Almancada fiil sona gider!",
+    grammar: {
+      title: "Yan Cümlelerde Fiil Sona Gider! (Verbendstellung)",
+      notes: [
+        "Yan cümlelerde (Nebensatz) fiil HER ZAMAN SONA gider. Bu Almanca'nın en kritik kurallarından biridir:\n- 'Ich lerne Deutsch, weil ich in Deutschland arbeiten möchte.'\n(Almanya'da çalışmak istediğim için Almanca öğreniyorum.)\n- Ana cümle: 'Ich lerne Deutsch' + bağlaç 'weil' + yan cümle: 'ich in Deutschland arbeiten möchte' (fiil sona!)",
+        "WEIL (çünkü) — Neden/sebep bildiren bağlaç:\n- 'Er kommt nicht, weil er krank ist.' (Hasta olduğu için gelmiyor.)\nNot: 'weil' ve 'denn' ikisi de 'çünkü' anlamına gelir, ancak 'denn' ana cümle bağlacıdır ve fiili sona göndermez!\n- 'Er kommt nicht, denn er ist krank.' (Fiil normal yerinde kalır!)",
+        "DASS (ki/diye) — Dolaylı anlatım ve düşünceler:\n- 'Ich denke, dass Deutsch schwer ist.' (Almanca'nın zor olduğunu düşünüyorum.)\n- 'Ich hoffe, dass du kommst.' (Geleceğini umuyorum.)",
+        "WENN (eğer / her ne zaman) — Koşul veya tekrarlayan durum:\n- 'Wenn ich Zeit habe, lese ich ein Buch.' (Zamanım olunca/olursa kitap okurum.)\n- 'Wenn ich groß bin, werde ich Arzt.' (Büyüyünce doktor olacağım.)\nALS (tek seferlik geçmiş olay için):\n- 'Als ich jung war, lebte ich in Istanbul.' (Gençken İstanbul'da yaşıyordum.)",
+        "OB (olup olmadığı / mı, mi) — Dolaylı soru:\n- 'Ich weiß nicht, ob er kommt.' (Gelip gelmeyeceğini bilmiyorum.)\n- 'Kannst du mir sagen, ob der Bus pünktlich ist?' (Otobüsün dakik olup olmadığını söyler misin?)\nOBWOHL (rağmen/karşın) — Zıtlık:\n- 'Ich gehe spazieren, obwohl es regnet.' (Yağmur yağmasına rağmen yürüyüşe çıkıyorum.)"
+      ]
+    },
+    grammarTables: [
+      {
+        title: "Yaygın Bağlaçlar ve Anlamları",
+        headers: ["Bağlaç", "Türkçe", "Cümle Yapısı", "Örnek"],
+        rows: [
+          ["weil", "çünkü", "... weil + Özne + ... + FİİL", "..., weil ich müde bin."],
+          ["dass", "ki / diye", "... dass + Özne + ... + FİİL", "..., dass du kommst."],
+          ["wenn", "eğer / her ne zaman", "... wenn + Özne + ... + FİİL", "..., wenn ich Zeit habe."],
+          ["als", "... iken (geçmiş, tek seferlik)", "... als + Özne + ... + FİİL", "..., als ich jung war."],
+          ["ob", "-ip olmadığı / mı", "... ob + Özne + ... + FİİL", "..., ob er kommt."],
+          ["obwohl", "rağmen", "... obwohl + Özne + ... + FİİL", "..., obwohl es schwer ist."],
+          ["bevor", "önce / yapmadan", "... bevor + Özne + ... + FİİL", "..., bevor ich schlafe."],
+          ["nachdem", "sonra / -dikten sonra", "... nachdem + Özne + ... + FİİL", "..., nachdem wir gegessen haben."],
+        ]
+      }
+    ],
+    culturalNote: "🇩🇪 Almanca'nın 'fiil sona gider' kuralı başlangıçta çok garip gelir. Ancak bu kural Almanca'ya özgü değil — Japonca, Korece ve Türkçe de (!) fiilin sona gittiği dillerdir. Almancayı öğrenen Türklerin bu konuda aslında avantajı var: cümlenin anlamı bitmeden anlamı beklemeye alışkınız!",
+    annaTip: "💡 Anna'nın İpucu: Yan cümlede modal fiil varsa, yardımcı fiil değil asıl fiil sona gider, modal onu takip eder: 'Ich gehe nicht, weil ich arbeiten muss.' (Son iki kelime: arbeiten muss — asıl fiil önde, modal arkada!) Bu sıra çok sık hata kaynağıdır.",
+    commonMistakes: [
+      "❌ 'Ich komme nicht, weil ich bin krank.' → weil sonrası fiil SONA gider!",
+      "✅ 'Ich komme nicht, weil ich krank bin.' deyin.",
+      "❌ 'Ich weiß nicht, ob kommt er.' → ob'dan sonra da fiil sona gider!",
+      "✅ 'Ich weiß nicht, ob er kommt.' deyin.",
+      "❌ wenn vs. als karıştırmak: 'Als ich jung bin...' → als = geçmiş tek seferlik!",
+      "✅ Şimdiki/gelecekteki koşul: 'wenn'. Geçmişteki tek olay: 'als'.",
+    ],
+    examples: [
+      { de: "Ich lerne Deutsch, weil ich in Deutschland leben möchte.", tr: "Almanya'da yaşamak istediğim için Almanca öğreniyorum." },
+      { de: "Ich hoffe, dass du bald kommst.", tr: "Yakında geleceğini umuyorum." },
+      { de: "Ruf mich an, wenn du ankommst.", tr: "Varınca beni ara." },
+      { de: "Als ich ein Kind war, hatte ich einen Hund.", tr: "Çocukken bir köpeğim vardı." },
+      { de: "Weißt du, ob das Museum heute geöffnet ist?", tr: "Müzenin bugün açık olup olmadığını biliyor musun?" },
+    ]
+  },
+
+  {
+    id: 19,
+    level: "A2",
+    titleDE: "Wechselpräpositionen",
+    titleTR: "İki Yönlü Edatlar",
+    icon: "📍",
+    color: "#7c3aed",
+    description: "an, auf, in, hinter, vor, neben, über, unter, zwischen — Hareket (Akkusativ) veya Konum (Dativ) almalarıyla iki yönlü edatlar.",
+    grammar: {
+      title: "Wohin? → Akkusativ | Wo? → Dativ",
+      notes: [
+        "İki yönlü edatlar (Wechselpräpositionen) 9 tanedir:\nan, auf, hinter, in, neben, über, unter, vor, zwischen\n\nBu edatlar iki farklı soru sorusuna iki farklı yanıt verir:\n✅ 'Wohin?' (Nereye?) → Hareket/Yön → AKKUSATİV\n✅ 'Wo?' (Nerede?) → Konum/Durum → DATİV",
+        "Akku vs. Dativ farkı eylemle anlaşılır:\n- 'Ich stelle das Buch INS Regal.' (Kitabı rafa koyuyorum → hareket → in + Akkusativ → ins = in das)\n- 'Das Buch steht IM Regal.' (Kitap rafın içinde duruyor → konum → in + Dativ → im = in dem)",
+        "Lokasyon fiilleri (Konum → Dativ):\n- sein, stehen, liegen, sitzen, hängen\n- 'Die Katze liegt auf dem Sofa.' (Kedi kanepede uzanıyor.)\nHareket/Yerleştirme fiilleri (Yön → Akkusativ):\n- stellen, legen, setzen, hängen (koymak), gehen, fahren\n- 'Ich lege das Buch auf den Tisch.' (Kitabı masaya bırakıyorum.)",
+        "Birleşimler (kontraksiyon):\n- in + das = ins | in + dem = im\n- an + das = ans | an + dem = am\n- auf + das (birleşmez, 'auf das' kalır genellikle)"
+      ]
+    },
+    grammarTables: [
+      {
+        title: "9 İki Yönlü Edat ve Anlamları",
+        headers: ["Edat", "Wo? (Dativ)", "Wohin? (Akkusativ)", "Türkçe"],
+        rows: [
+          ["an", "an der Wand (duvarda)", "an die Wand (duvara)", "yanında / kenarında"],
+          ["auf", "auf dem Tisch (masada)", "auf den Tisch (masaya)", "üstünde"],
+          ["hinter", "hinter dem Haus (evin arkasında)", "hinter das Haus (evin arkasına)", "arkasında"],
+          ["in", "in der Schule (okulda)", "in die Schule (okula)", "içinde"],
+          ["neben", "neben dem Bett (yatağın yanında)", "neben das Bett (yatağın yanına)", "yanında (bitişik)"],
+          ["über", "über dem Tisch (masanın üzerinde)", "über den Tisch (masanın üzerine)", "üzerinde/üstünden"],
+          ["unter", "unter dem Bett (yatağın altında)", "unter das Bett (yatağın altına)", "altında"],
+          ["vor", "vor dem Kino (sinema önünde)", "vor das Kino (sinema önüne)", "önünde"],
+          ["zwischen", "zwischen den Stühlen (sandalyeler arasında)", "zwischen die Stühle (sandalyeler arasına)", "arasında"],
+        ]
+      },
+      {
+        title: "Konum vs. Hareket Fiilleri",
+        headers: ["Eylem", "Fiil", "Soru", "Hal", "Örnek"],
+        rows: [
+          ["Durmak", "stehen / liegen / sitzen / sein", "Wo?", "Dativ", "Das Buch liegt auf dem Tisch."],
+          ["Koymak / Yerleştirmek", "stellen / legen / setzen / hängen", "Wohin?", "Akkusativ", "Ich stelle das Buch auf den Tisch."],
+          ["Gitmek", "gehen / fahren / laufen", "Wohin?", "Akkusativ", "Ich gehe in die Küche."],
+        ]
+      }
+    ],
+    culturalNote: "🇩🇪 Almanya'da sokak tabelaları ve yol tarifleri Wechselpräpositionen ile doludur: 'Am Marktplatz links abbiegen' (Pazar meydanında sola dönün), 'Hinter dem Bahnhof parken' (İstasyonun arkasında park edin). Bu yapıları anlamak, Almanya'da günlük hayatı çok kolaylaştırır.",
+    annaTip: "💡 Anna'nın İpucu: 'stellen vs. stehen' ve 'legen vs. liegen' çiftlerini hatırlamanın kolay yolu:\n- STELLEN / LEGEN = Yaptıran eylemler (bir şeyi koyuyorum) → Akkusativ\n- STEHEN / LIEGEN = Kendi başına durum (bir şey orada duruyor) → Dativ\nTürkçede 'koymak' vs. 'durmak/yatmak' farkı gibi düşünün!",
+    commonMistakes: [
+      "❌ 'Ich gehe in dem Supermarkt.' → Gitmek harekettir → Akkusativ!",
+      "✅ 'Ich gehe in den Supermarkt.' deyin.",
+      "❌ 'Das Buch liegt auf den Tisch.' → Yatmak konumdur → Dativ!",
+      "✅ 'Das Buch liegt auf dem Tisch.' deyin.",
+    ],
+    examples: [
+      { de: "Das Café ist neben der Bäckerei.", tr: "Kafe, fırının yanında." },
+      { de: "Ich hänge das Bild an die Wand.", tr: "Tabloyu duvara asıyorum." },
+      { de: "Die Katze sitzt unter dem Stuhl.", tr: "Kedi sandalyenin altında oturuyor." },
+      { de: "Stell bitte deine Schuhe vor die Tür.", tr: "Lütfen ayakkabılarını kapının önüne koy." },
+      { de: "Zwischen dem Bahnhof und dem Hotel gibt es ein Restaurant.", tr: "İstasyon ile otel arasında bir restoran var." },
+    ]
+  },
+
+  {
+    id: 20,
+    level: "A2",
+    titleDE: "Konjunktiv II",
+    titleTR: "Koşullu Kip: würde, könnte, hätte",
+    icon: "💭",
+    color: "#9333ea",
+    description: "Dilek, varsayım ve kibarca rica cümlelerinde kullanılan Konjunktiv II: würde + Infinitiv, könnte, hätte, wäre.",
+    grammar: {
+      title: "Würde + İnfinitiv | Könnte / Hätte / Wäre",
+      notes: [
+        "Konjunktiv II başlıca 3 amaçla kullanılır:\n1) Gerçek olmayan koşullar: 'Wenn ich reich wäre, würde ich reisen.' (Zengin olsaydım, seyahat ederdim.)\n2) Kibarca rica: 'Könnten Sie mir helfen?' (Yardım edebilir misiniz?)\n3) Öneri/dilek: 'Ich würde lieber Tee trinken.' (Çay içmeyi tercih ederdim.)",
+        "'würde + Infinitiv' yapısı — çoğu fiilin Konjunktiv II'si bu şekilde yapılır:\n- ich würde / du würdest / er-sie würde\n- wir würden / ihr würdet / sie-Sie würden\nÖrnek: 'Ich würde gerne reisen.' (Seyahat etmek isterdim.)",
+        "Sık kullanılan özel Konjunktiv II formları (ayrıca ezberlenmeli!):\n- sein → wäre (ich wäre, du wärst, er wäre)\n- haben → hätte (ich hätte, du hättest, er hätte)\n- können → könnte (ich könnte, du könntest)\n- müssen → müsste (ich müsste, du müsstest)\n- dürfen → dürfte (ich dürfte)\nBunlar 'würde + fiil' olmadan doğrudan kullanılır!",
+        "Kibarca ricalar için Konjunktiv II:\n- 'Könnten Sie bitte langsamer sprechen?' (Daha yavaş konuşabilir misiniz lütfen?)\n- 'Dürfte ich das Fenster öffnen?' (Pencereyi açabilir miyim?)\n- 'Hätten Sie einen Moment Zeit?' (Bir dakikanız var mı?)"
+      ]
+    },
+    grammarTables: [
+      {
+        title: "würde — Konjunktiv II Yardımcı Fiili",
+        headers: ["Kişi", "würde + Inf.", "Türkçe"],
+        rows: [
+          ["ich", "ich würde kommen", "gelirdim"],
+          ["du", "du würdest kommen", "gelirdin"],
+          ["er / sie / es", "er würde kommen", "gelirdi"],
+          ["wir", "wir würden kommen", "gelirdik"],
+          ["ihr", "ihr würdet kommen", "gelirdiniz"],
+          ["sie / Sie", "sie würden kommen", "gelirlerdi / gelirdiniz"],
+        ]
+      },
+      {
+        title: "Özel Konjunktiv II Formları",
+        headers: ["Fiil", "Konjunktiv II (ich)", "Türkçe Anlamı"],
+        rows: [
+          ["sein → wäre", "Ich wäre glücklich.", "Mutlu olurdum."],
+          ["haben → hätte", "Ich hätte Zeit.", "Zamanım olurdu."],
+          ["können → könnte", "Könnten Sie helfen?", "Yardım edebilir misiniz?"],
+          ["müssen → müsste", "Ich müsste arbeiten.", "Çalışmam gerekirdi."],
+          ["dürfen → dürfte", "Dürfte ich fragen?", "Sorsam olur mu?"],
+          ["mögen → möchte", "Ich möchte Kaffee.", "Kahve istiyorum. (kibar)"],
+        ]
+      }
+    ],
+    culturalNote: "🇩🇪 Almanya'da Konjunktiv II kibarlığın simgesidir. 'Ich will...' (İstiyorum) yerine 'Ich würde gerne...' veya 'Ich hätte gerne...' demek çok daha kibar algılanır. Restorantta sipariş verirken, otelde check-in yaparken veya yardım isterken bu formları kullanmak sosyal açıdan büyük avantaj sağlar.",
+    annaTip: "💡 Anna'nın İpucu: Konjunktiv II'yi A2'de sadece kibarca rica ve 'würde + Fiil' kalıplarıyla başlayın. Karmaşık koşul cümlelerine (Wenn-Sätze) A2 sonunda veya B1'de odaklanırsınız. Öncelik: 'Könnten Sie...' ve 'Ich würde gerne...' kalıplarını akıcı kullanabilmek!",
+    commonMistakes: [
+      "❌ 'Ich würde sein glücklich.' → sein/haben/können için würde kullanılmaz!",
+      "✅ 'Ich wäre glücklich.' (sein → wäre) deyin.",
+      "❌ 'Könntest Sie bitte helfen?' → Sie ile konuşunca -en/-en takısı!",
+      "✅ 'Könnten Sie bitte helfen?' deyin.",
+    ],
+    examples: [
+      { de: "Könnten Sie mir bitte helfen?", tr: "Bana yardım edebilir misiniz lütfen?" },
+      { de: "Ich würde gerne mehr reisen.", tr: "Daha çok seyahat etmek isterdim." },
+      { de: "Wenn ich mehr Zeit hätte, würde ich Sport treiben.", tr: "Daha fazla zamanım olsaydı spor yapardım." },
+      { de: "Das wäre wirklich toll!", tr: "Bu gerçekten harika olurdu!" },
+      { de: "Hätten Sie einen Tisch für zwei Personen frei?", tr: "İki kişilik boş masanız var mı?" },
+    ]
+  },
+
+  {
+    id: 21,
+    level: "A2",
+    titleDE: "Berufe & Arbeitswelt",
+    titleTR: "Meslekler ve İş Hayatı",
+    icon: "💼",
+    color: "#0369a1",
+    description: "Meslek isimleri, iş görüşmesi kalıpları, CV hazırlama ve Almanya'da iş hayatı kültürü.",
+    grammar: {
+      title: "Meslekler ve werden (Geleceği Bildirme)",
+      notes: [
+        "Almanca'da meslek belirtirken artikel kullanılmaz!\n- ✅ 'Ich bin Arzt.' (Doktorum.) — ARTIKEL YOK\n- ❌ 'Ich bin ein Arzt.' — Yanlış!\nBir mesleğe sahip olmak için 'als + meslek' kalıbı da kullanılır:\n- 'Ich arbeite als Ingenieur.' (Mühendis olarak çalışıyorum.)",
+        "Cinsiyete göre meslek isimleri:\nAlmanca'da meslekler erkek ve kadın formunda değişir:\n- Lehrer (erkek öğretmen) → Lehrerin (kadın öğretmen)\n- Arzt (erkek doktor) → Ärztin\n- Ingenieur → Ingenieurin\n- Koch (aşçı erkek) → Köchin\n- Verkäufer (satıcı erkek) → Verkäuferin\nÇoğulda genellikle -innen eki gelir: Lehrerinnen, Ärztinnen",
+        "werden + Infinitiv → Gelecek Zaman (Futur I):\n- 'Ich werde Arzt werden.' (Doktor olacağım.)\n- 'Er wird bald anfangen.' (Yakında başlayacak.)\n- Çekimi: ich werde / du wirst / er wird / wir werden / ihr werdet / sie werden",
+        "İş görüşmesinde kritik fiiller:\n- sich bewerben um (başvurmak için)\n- eingestellt werden (işe alınmak)\n- kündigen (istifa etmek / işten çıkarmak)\n- ein Vorstellungsgespräch haben (iş görüşmesi yapmak)"
+      ]
+    },
+    grammarTables: [
+      {
+        title: "Yaygın Meslekler (Kadın ve Erkek Formu)",
+        headers: ["Erkek Formu", "Kadın Formu", "Türkçe"],
+        rows: [
+          ["der Arzt", "die Ärztin", "Doktor"],
+          ["der Lehrer", "die Lehrerin", "Öğretmen"],
+          ["der Ingenieur", "die Ingenieurin", "Mühendis"],
+          ["der Anwalt", "die Anwältin", "Avukat"],
+          ["der Koch", "die Köchin", "Aşçı"],
+          ["der Kellner", "die Kellnerin", "Garson"],
+          ["der Verkäufer", "die Verkäuferin", "Satış Elemanı"],
+          ["der Polizist", "die Polizistin", "Polis Memuru"],
+          ["der Architekt", "die Architektin", "Mimar"],
+          ["der Pfleger", "die Pflegerin", "Hemşire/Bakıcı"],
+          ["der Fahrer", "die Fahrerin", "Sürücü"],
+          ["der Programmierer", "die Programmiererin", "Programcı"],
+        ]
+      },
+      {
+        title: "İş Hayatı Kelimeleri",
+        headers: ["Almanca", "Türkçe"],
+        rows: [
+          ["die Bewerbung (-en)", "iş başvurusu"],
+          ["der Lebenslauf (-̈e)", "özgeçmiş (CV)"],
+          ["das Vorstellungsgespräch (-e)", "iş görüşmesi"],
+          ["das Gehalt (-̈er)", "maaş"],
+          ["die Stelle (-n)", "pozisyon / iş yeri"],
+          ["der Kollege / die Kollegin", "meslektaş"],
+          ["der Chef / die Chefin", "patron / müdür"],
+          ["die Kündigung (-en)", "işten ayrılma / ihraç"],
+          ["die Überstunden (çoğul)", "fazla mesai"],
+          ["der Urlaub", "izin / tatil"],
+          ["das Büro (-s)", "ofis"],
+          ["die Besprechung (-en)", "toplantı"],
+        ]
+      }
+    ],
+    culturalNote: "🇩🇪 Almanya'da çalışma kültürü Türkiye'den oldukça farklıdır. 'Work-Life-Balance' (iş-yaşam dengesi) son derece önemlidir. Mesai saatlerinin dışında iş konuşmak pek hoş karşılanmaz. Çalışan hakları çok güçlüdür: yıllık ortalama 24-30 gün ücretli izin zorunludur. 'Betriebsrat' (işyeri konseyi) çalışanların haklarını korur.",
+    annaTip: "💡 Anna'nın İpucu: Almanya'da bir işe başvururken 'Lebenslauf' (CV) Alman formatında olmalıdır: fotoğraflı, kronolojik sıralı ve kısa (maks. 2 sayfa). 'Bewerbungsschreiben' (ön yazı) da gereklidir. İngilizce'den farklı olarak kişisel bilgiler (doğum tarihi, uyruk) Alman CV'lerinde genellikle yer alır.",
+    commonMistakes: [
+      "❌ 'Ich bin ein Arzt.' → Meslek ifadelerinde artikel kullanılmaz!",
+      "✅ 'Ich bin Arzt.' deyin.",
+      "❌ 'Ich arbeite als Ingenieur.' ile 'Ich bin Ingenieur.' arasındaki nüansı atlamak.",
+      "✅ İkisi de doğru ama 'als' kullanımı genellikle mevcut iş durumunu vurgular.",
+    ],
+    examples: [
+      { de: "Ich bin seit fünf Jahren als Krankenschwester tätig.", tr: "Beş yıldır hemşire olarak çalışıyorum." },
+      { de: "Haben Sie Erfahrung in diesem Bereich?", tr: "Bu alanda deneyiminiz var mı?" },
+      { de: "Ich habe mich für die Stelle als Programmierer beworben.", tr: "Programcı pozisyonu için başvurdum." },
+      { de: "Mein Gehalt ist leider nicht sehr hoch.", tr: "Maaşım ne yazık ki çok yüksek değil." },
+      { de: "Nächste Woche haben wir eine wichtige Besprechung.", tr: "Gelecek hafta önemli bir toplantımız var." },
+    ]
+  },
+
+  {
+    id: 22,
+    level: "A2",
+    titleDE: "Urlaub & Freizeit",
+    titleTR: "Seyahat ve Boş Zaman",
+    icon: "✈️",
+    color: "#0d9488",
+    description: "Tatil planlama, uçuş rezervasyonu, otel konuşmaları, seyahat anıları ve boş zaman aktiviteleri.",
+    grammar: {
+      title: "Seyahat Anlatımı: Perfekt + Präteritum + Konjunktiv II",
+      notes: [
+        "Tatil anılarını anlatmak için Perfekt kullanılır:\n- 'Letzten Sommer bin ich nach Spanien gefahren.' (Geçen yaz İspanya'ya gittim.)\n- 'Wir haben viel besichtigt und schöne Fotos gemacht.' (Çok şey gezdik ve güzel fotoğraflar çektik.)",
+        "Tatil planları için Futur (werden) veya Präsens:\n- 'Nächstes Jahr werde ich nach Japan reisen.' (Gelecek yıl Japonya'ya seyahat edeceğim.)\n- 'Im Sommer fahren wir ans Meer.' (Yaz aylarında denize gidiyoruz.) — Präsens ile gelecek!",
+        "Tatil dileği için Konjunktiv II:\n- 'Ich würde gerne die Alpen besuchen.' (Alpler'i ziyaret etmek isterdim.)\n- 'Am liebsten würde ich am Strand liegen.' (En çok sahilde uzanmak isterdim.)",
+        "Otel ve uçuş rezervasyon kalıpları:\n- 'Ich möchte ein Zimmer für zwei Nächte reservieren.' (İki gecelik oda rezervasyonu yapmak istiyorum.)\n- 'Haben Sie noch freie Zimmer?' (Boş odanız var mı?)\n- 'Wann ist der Check-in / Check-out?' (Giriş / çıkış saati ne zaman?)"
+      ]
+    },
+    grammarTables: [
+      {
+        title: "Seyahat Kelimeleri",
+        headers: ["Almanca", "Türkçe", "Almanca", "Türkçe"],
+        rows: [
+          ["der Flughafen", "havalimanı", "die Abfahrt", "kalkış"],
+          ["das Flugzeug", "uçak", "die Ankunft", "varış"],
+          ["der Koffer", "bavul", "die Verspätung", "gecikme"],
+          ["der Reisepass", "pasaport", "das Visum", "vize"],
+          ["die Unterkunft", "konaklama", "das Hotel", "otel"],
+          ["die Sehenswürdigkeit", "turistik yer", "der Strand", "sahil/plaj"],
+          ["das Gebirge", "dağlık alan", "der See", "göl"],
+          ["der Ausflug", "günübirlik gezi", "die Reise", "seyahat/yolculuk"],
+        ]
+      },
+      {
+        title: "Boş Zaman Aktiviteleri",
+        headers: ["Aktivite", "Türkçe", "Nasıl Kullanılır?"],
+        rows: [
+          ["wandern gehen", "yürüyüşe çıkmak", "Ich gehe gern wandern."],
+          ["schwimmen gehen", "yüzmeye gitmek", "Wir gehen am Wochenende schwimmen."],
+          ["ins Kino gehen", "sinemaya gitmek", "Willst du ins Kino gehen?"],
+          ["ins Theater gehen", "tiyatroya gitmek", "Wir gehen ins Theater."],
+          ["Sport treiben", "spor yapmak", "Ich treibe jeden Tag Sport."],
+          ["Musik hören", "müzik dinlemek", "Sie hört gern klassische Musik."],
+          ["lesen", "okumak", "Er liest täglich eine Stunde."],
+          ["reisen", "seyahat etmek", "Ich reise sehr gern."],
+          ["kochen", "yemek yapmak", "Sie kocht am Wochenende gern."],
+          ["fotografieren", "fotoğraf çekmek", "Er fotografiert die Natur."],
+        ]
+      }
+    ],
+    culturalNote: "🇩🇪 Almanlar seyahati çok sever! Almanya'da kişi başına düşen seyahat harcaması Avrupa'nın en yükseklerindendir. Popüler tatil destinasyonları arasında Mallorca (İspanya), Türkiye, Balkanlar ve İtalya yer alır. 'Mallorca ist das 17. Bundesland' (Mallorca 17. eyalet) şakası yaygındır — o kadar çok Alman tatilci gider! Boş zamanlarında ise Verein'ler (kulüpler) çok popülerdir: futbol, Karneval, koro, satranç...",
+    annaTip: "💡 Anna'nın İpucu: 'Sport treiben' kalıbı 'spor yapmak' için standart ifadedir. 'Sport machen' de kullanılır ama 'Sport treiben' daha resmidir. Belirli bir sporu yaparken ise farklı fiiller gelir: 'Fußball spielen' (futbol oynamak), 'schwimmen gehen' (yüzmeye gitmek), 'laufen' (koşmak).",
+    commonMistakes: [
+      "❌ 'Ich mache Sport Fußball.' → Belirli spor + spielen/gehen!",
+      "✅ 'Ich spiele Fußball.' veya 'Ich treibe Sport.' deyin.",
+      "❌ Seyahat anlatımında 'ich habe gefahren' → fahren sein alır!",
+      "✅ 'Ich bin nach Italien gefahren.' deyin.",
+    ],
+    examples: [
+      { de: "Letzten Sommer sind wir nach Portugal geflogen.", tr: "Geçen yaz Portekiz'e uçtuk." },
+      { de: "Ich möchte ein ruhiges Doppelzimmer mit Meerblick.", tr: "Deniz manzaralı sessiz bir çift kişilik oda istiyorum." },
+      { de: "Haben Sie noch Zimmer für nächste Woche frei?", tr: "Gelecek hafta için boş odanız var mı?" },
+      { de: "Was kann man hier in der Gegend besichtigen?", tr: "Bu çevrede ne gibi yerler gezebiliriz?" },
+      { de: "Am Wochenende gehe ich gern wandern oder ins Kino.", tr: "Hafta sonları yürüyüşe çıkmayı veya sinemaya gitmeyi severim." },
     ]
   }
 ];

@@ -13,6 +13,7 @@ import GoetheDetail from "./pages/GoetheDetail";
 import DailyLife from "./pages/DailyLife";
 import Exercises from "./pages/Exercises";
 import Progress from "./pages/Progress";
+import ArtikelQuiz from "./pages/ArtikelQuiz";
 
 // Components
 import Navbar from "./components/Navbar";
@@ -37,6 +38,9 @@ export default function App() {
     addWrongAnswer,
     removeWrongAnswer,
     clearWrongAnswers,
+    wordStats,
+    studyDays,
+    recordWordResult,
     resetAllProgress
   } = useProgress();
 
@@ -47,9 +51,8 @@ export default function App() {
 
   return (
     <Router>
-      <div className="min-h-screen flex flex-col bg-slate-50 text-slate-800 dark:bg-darkNavy-950 dark:text-slate-100 transition-colors duration-300">
-        
-        {/* Navigation Bar */}
+      <div className="min-h-screen flex flex-col bg-slate-100 text-slate-800 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-300">
+
         <Navbar
           username={name}
           streak={streak}
@@ -58,8 +61,7 @@ export default function App() {
           onReset={handleReset}
         />
 
-        {/* Main Workspace Area */}
-        <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <main className="flex-1 max-w-6xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <Routes>
             <Route
               path="/"
@@ -103,7 +105,16 @@ export default function App() {
             />
             <Route
               path="/flashcards"
-              element={<Flashcards addWrongAnswer={addWrongAnswer} />}
+              element={
+                <Flashcards
+                  addWrongAnswer={addWrongAnswer}
+                  recordWordResult={recordWordResult}
+                />
+              }
+            />
+            <Route
+              path="/artikel-quiz"
+              element={<ArtikelQuiz recordWordResult={recordWordResult} />}
             />
             <Route
               path="/exercises"
@@ -145,19 +156,18 @@ export default function App() {
                   streak={streak}
                   removeWrongAnswer={removeWrongAnswer}
                   clearWrongAnswers={clearWrongAnswers}
+                  wordStats={wordStats}
+                  studyDays={studyDays}
                 />
               }
             />
           </Routes>
         </main>
 
-        {/* Footer */}
-        <footer className="w-full py-6 mt-12 border-t border-slate-200/50 dark:border-indigo-950/40 bg-white dark:bg-darkNavy-900/60 text-center text-xs font-semibold text-slate-400 dark:text-slate-500">
-          <div className="max-w-7xl mx-auto px-4 space-y-1">
-            <p>Hallo A1 - Almanca A1 Seviye Öğrenme Platformu © {new Date().getFullYear()}</p>
-            <p className="font-normal text-slate-300 dark:text-slate-600">
-              Çevrimdışı ve Yerel olarak çalışır • Tasarım: Antigravity AI
-            </p>
+        <footer className="w-full py-5 mt-8 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-center text-xs text-slate-400 dark:text-slate-500">
+          <div className="max-w-6xl mx-auto px-4">
+            <p className="font-semibold">AlmancaKursu — Goethe A1 Hazırlık Platformu © {new Date().getFullYear()}</p>
+            <p className="mt-0.5">Çevrimdışı çalışır • Tüm veriler cihazınızda saklanır</p>
           </div>
         </footer>
 
