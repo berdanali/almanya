@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import {
   BookOpen, ShieldCheck, Layers, ChevronRight,
-  User, Award, Flame, BarChart2, CheckCircle2, GraduationCap, ArrowRight
+  User, Award, Flame, BarChart2, CheckCircle2, GraduationCap, ArrowRight, MessageCircle
 } from "lucide-react";
 import { modules } from "../data/modules";
 import { words } from "../data/words";
@@ -180,6 +180,15 @@ export default function Dashboard({ username, streak, points, xp, progress, lear
             desc="Hata defteri, rozetler ve istatistikler"
             linkText="İlerlemeyi Gör"
             linkColor="text-emerald-600 dark:text-emerald-400"
+          />
+          <QuickLink
+            to="/conversations"
+            icon={<MessageCircle className="w-4 h-4 text-teal-600 dark:text-teal-400" />}
+            iconBg="bg-teal-100 dark:bg-teal-900/30"
+            title="Konuşma Pratiği"
+            desc="8 senaryo · AI karakterlerle Almanca konuş"
+            linkText="Konuşmaya Başla"
+            linkColor="text-teal-600 dark:text-teal-400"
           />
         </div>
       </div>

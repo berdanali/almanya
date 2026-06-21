@@ -14,6 +14,8 @@ import DailyLife from "./pages/DailyLife";
 import Exercises from "./pages/Exercises";
 import Progress from "./pages/Progress";
 import ArtikelQuiz from "./pages/ArtikelQuiz";
+import Conversations from "./pages/Conversations";
+import ConversationChat from "./pages/ConversationChat";
 
 // Components
 import Navbar from "./components/Navbar";
@@ -41,6 +43,8 @@ export default function App() {
     wordStats,
     studyDays,
     recordWordResult,
+    addXP,
+    addPoints,
     resetAllProgress
   } = useProgress();
 
@@ -140,6 +144,14 @@ export default function App() {
                   saveGoetheProgress={saveGoetheProgress}
                 />
               }
+            />
+            <Route
+              path="/conversations"
+              element={<Conversations />}
+            />
+            <Route
+              path="/conversations/:id"
+              element={<ConversationChat addXP={addXP} addPoints={addPoints} />}
             />
             <Route
               path="/dailylife"

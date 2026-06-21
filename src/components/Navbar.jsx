@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Sun, Moon, Flame, BookOpen, Layers, BarChart2, Menu, X, ShieldCheck, GraduationCap } from "lucide-react";
+import { Sun, Moon, Flame, BookOpen, Layers, BarChart2, Menu, X, ShieldCheck, GraduationCap, MessageCircle } from "lucide-react";
 
 export default function Navbar({ username, streak, points, xp, onReset }) {
   const [theme, setTheme] = useState(() => localStorage.getItem("theme") || "light");
@@ -16,6 +16,7 @@ export default function Navbar({ username, streak, points, xp, onReset }) {
   const navLinks = [
     { to: "/", label: "Ana Sayfa", icon: Layers },
     { to: "/modules", label: "Kurslar", icon: BookOpen },
+    { to: "/conversations", label: "Konuşma", icon: MessageCircle },
     { to: "/goethe", label: "Sınav", icon: ShieldCheck, accent: true },
     { to: "/flashcards", label: "Kelimeler", icon: GraduationCap },
     { to: "/progress", label: "İlerleme", icon: BarChart2 },
