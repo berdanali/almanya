@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import {
   BookOpen, ShieldCheck, Layers, ChevronRight,
-  User, Award, Flame, BarChart2, CheckCircle2, GraduationCap, ArrowRight, MessageCircle
+  User, Award, Flame, BarChart2, CheckCircle2, GraduationCap, ArrowRight, MessageCircle, Dumbbell
 } from "lucide-react";
 import { modules } from "../data/modules";
 import { words } from "../data/words";
@@ -186,9 +186,18 @@ export default function Dashboard({ username, streak, points, xp, progress, lear
             icon={<MessageCircle className="w-4 h-4 text-teal-600 dark:text-teal-400" />}
             iconBg="bg-teal-100 dark:bg-teal-900/30"
             title="Konuşma Pratiği"
-            desc="8 senaryo · AI karakterlerle Almanca konuş"
+            desc="40 senaryo · AI karakterlerle Almanca konuş"
             linkText="Konuşmaya Başla"
             linkColor="text-teal-600 dark:text-teal-400"
+          />
+          <QuickLink
+            to="/practice"
+            icon={<Dumbbell className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />}
+            iconBg="bg-emerald-100 dark:bg-emerald-900/30"
+            title="Pratik Merkezi"
+            desc="6 alıştırma türü · Boşluk, çeviri, dinleme, kelime"
+            linkText="Pratik Yap"
+            linkColor="text-emerald-600 dark:text-emerald-400"
           />
         </div>
       </div>

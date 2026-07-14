@@ -16,6 +16,7 @@ import Progress from "./pages/Progress";
 import ArtikelQuiz from "./pages/ArtikelQuiz";
 import Conversations from "./pages/Conversations";
 import ConversationChat from "./pages/ConversationChat";
+import Practice from "./pages/Practice";
 
 // Components
 import Navbar from "./components/Navbar";
@@ -152,6 +153,10 @@ export default function App() {
             <Route
               path="/conversations/:id"
               element={<ConversationChat addXP={addXP} addPoints={addPoints} />}
+            />
+            <Route
+              path="/practice"
+              element={<Practice addXP={addXP} addPoints={addPoints} />}
             />
             <Route
               path="/dailylife"

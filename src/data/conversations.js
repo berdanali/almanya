@@ -1,6 +1,8 @@
 // src/data/conversations.js — Dallanan konuşma senaryoları
+import { conversationsA1Extra } from "./conversations_a1";
+import { conversationsA2Extra } from "./conversations_a2";
 
-export const conversations = [
+const conversationsBase = [
   // ──────────── A1 ────────────
   {
     id: "c1",
@@ -847,4 +849,10 @@ export const conversations = [
       },
     },
   },
+];
+
+export const conversations = [
+  ...conversationsBase,
+  ...conversationsA1Extra,
+  ...conversationsA2Extra,
 ];
