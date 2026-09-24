@@ -110,7 +110,7 @@ export default function Conversations() {
           return (
             <Link
               key={scenario.id}
-              to={`/conversations/${scenario.id}`}
+              to={`/konusma/diyalog/${scenario.id}`}
               className={`group relative bg-white dark:bg-slate-900 border rounded-2xl p-5 hover:shadow-lg transition-all hover:-translate-y-0.5 ${
                 isCompleted
                   ? "border-emerald-200 dark:border-emerald-900/50"

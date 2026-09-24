@@ -18,7 +18,7 @@ export default function LearningPath({ progress }) {
             </p>
           </div>
         </div>
-        <Link to="/modules" className="text-xs font-bold text-accentViolet-500 hover:underline flex items-center gap-1">
+        <Link to="/kurslar" className="text-xs font-bold text-accentViolet-500 hover:underline flex items-center gap-1">
           Tümü <ChevronRight className="w-3 h-3" />
         </Link>
       </div>
@@ -40,7 +40,7 @@ export default function LearningPath({ progress }) {
               )}
 
               <Link
-                to={isLocked ? "#" : `/modules/${mod.id}`}
+                to={isLocked ? "#" : `/kurslar/${mod.id}`}
                 className={`flex items-center gap-3 p-3 rounded-xl transition-all ${
                   isLocked
                     ? "opacity-40 cursor-not-allowed"

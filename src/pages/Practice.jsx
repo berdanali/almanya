@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import {
   PenLine, ListOrdered, Languages, Volume2, Brain,
-  Layers, ArrowLeft, Trophy, Zap, Star
+  Layers, ArrowLeft, Trophy, Zap, Star, AlertCircle, BookOpen
 } from "lucide-react";
 import { practiceData } from "../data/practiceData";
 import { words } from "../data/words";
@@ -12,6 +12,8 @@ import TranslationQuiz from "../components/practice/TranslationQuiz";
 import ListeningQuiz from "../components/practice/ListeningQuiz";
 import WordGuess from "../components/practice/WordGuess";
 import DragMatch from "../components/exercises/DragMatch";
+import ErrorCorrection from "../components/practice/ErrorCorrection";
+import VerbConjugation from "../components/practice/VerbConjugation";
 import { shuffleArray } from "../utils/helpers";
 
 const SESSION_SIZE = 50;
@@ -65,6 +67,22 @@ const TYPES = [
     color: "rose",
     emoji: "🔗",
   },
+  {
+    id: "error-correction",
+    title: "Hata Bul & Düzelt",
+    desc: "Yanlış cümleyi tespit et",
+    icon: AlertCircle,
+    color: "orange",
+    emoji: "🔍",
+  },
+  {
+    id: "verb-conjugation",
+    title: "Zaman Çekimi",
+    desc: "Fiili doğru çekimle",
+    icon: BookOpen,
+    color: "teal",
+    emoji: "📝",
+  },
 ];
 
 const C = {
@@ -116,6 +134,22 @@ const C = {
     all: "bg-rose-900 hover:bg-rose-950",
     badge: "bg-rose-100 dark:bg-rose-900/40 text-rose-700 dark:text-rose-300",
   },
+  orange: {
+    icon: "bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400",
+    border: "border-orange-200/70 dark:border-orange-800/50",
+    a1: "bg-orange-600 hover:bg-orange-700",
+    a2: "bg-orange-500 hover:bg-orange-600",
+    all: "bg-orange-900 hover:bg-orange-950",
+    badge: "bg-orange-100 dark:bg-orange-900/40 text-orange-700 dark:text-orange-300",
+  },
+  teal: {
+    icon: "bg-teal-100 dark:bg-teal-900/30 text-teal-600 dark:text-teal-400",
+    border: "border-teal-200/70 dark:border-teal-800/50",
+    a1: "bg-teal-600 hover:bg-teal-700",
+    a2: "bg-teal-500 hover:bg-teal-600",
+    all: "bg-teal-900 hover:bg-teal-950",
+    badge: "bg-teal-100 dark:bg-teal-900/40 text-teal-700 dark:text-teal-300",
+  },
 };
 
 function getPool(typeId, level) {
@@ -145,6 +179,14 @@ function getPool(typeId, level) {
       const range = level === "a1" ? [1, 12] : level === "a2" ? [13, 22] : [1, 22];
       return words.filter(w => w.module >= range[0] && w.module <= range[1]);
     }
+    case "error-correction":
+      return lvl
+        ? practiceData.errorCorrection[lvl]
+        : [...practiceData.errorCorrection.a1, ...practiceData.errorCorrection.a2];
+    case "verb-conjugation":
+      return lvl
+        ? practiceData.verbConjugation[lvl]
+        : [...practiceData.verbConjugation.a1, ...practiceData.verbConjugation.a2];
     default:
       return [];
   }
@@ -212,7 +254,7 @@ export default function Practice({ addXP, addPoints }) {
           <div>
             <h1 className="text-2xl font-black text-slate-900 dark:text-white">Pratik Merkezi</h1>
             <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">
-              6 farklı alıştırma türü · A1 ve A2 seviyeleri · Her oturum 10 soru
+              8 farklı alıştırma türü · A1 ve A2 seviyeleri · Her oturum 10 soru
             </p>
           </div>
 
@@ -310,6 +352,12 @@ export default function Practice({ addXP, addPoints }) {
           )}
           {activeTypeId === "matching" && sessionQuestions.length > 0 && (
             <DragMatch words={sessionQuestions} onComplete={onMatchDone} />
+          )}
+          {activeTypeId === "error-correction" && sessionQuestions.length > 0 && (
+            <ErrorCorrection questions={sessionQuestions} onComplete={onSessionDone} />
+          )}
+          {activeTypeId === "verb-conjugation" && sessionQuestions.length > 0 && (
+            <VerbConjugation questions={sessionQuestions} onComplete={onSessionDone} />
           )}
         </div>
       )}

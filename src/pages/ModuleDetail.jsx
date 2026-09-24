@@ -10,12 +10,26 @@ import { modules } from "../data/modules";
 import { words } from "../data/words";
 import { dialogs } from "../data/dialogs";
 import { exercisesData } from "../data/exercises";
+import { getModulePracticePool } from "../data/modulePractice";
 
 import FillInBlank from "../components/exercises/FillInBlank";
 import MultipleChoice from "../components/exercises/MultipleChoice";
 import DragMatch from "../components/exercises/DragMatch";
 import GrammarExercise from "../components/exercises/GrammarExercise";
+import SentenceBuilder from "../components/practice/SentenceBuilder";
+import TranslationQuiz from "../components/practice/TranslationQuiz";
+import ListeningQuiz from "../components/practice/ListeningQuiz";
+import WordGuess from "../components/practice/WordGuess";
+import ErrorCorrection from "../components/practice/ErrorCorrection";
+import VerbConjugation from "../components/practice/VerbConjugation";
 import { shuffleArray } from "../utils/helpers";
+import { pickQuestions } from "../utils/questionPool";
+
+// Picks questions from module practice pool with session-based deduplication.
+function pickPool(moduleId, type, count = 12) {
+  const pool = getModulePracticePool(moduleId, type);
+  return pickQuestions(pool, count, `m${moduleId}_${type}`);
+}
 
 // --- Grammar Table Component ---
 function GrammarTable({ table }) {
@@ -175,6 +189,40 @@ export default function ModuleDetail({ progress, learnedWords, toggleWordLearned
     setExerciseResult(null);
   };
 
+  // --- Yeni: konuya özel bol pratik türleri (modulePractice.js'ten) ---
+  const startSentenceBuilder = () => {
+    setQuizQuestions(pickPool(moduleId, "sentenceBuilder", 12));
+    setActiveExercise("sentence");
+    setExerciseResult(null);
+  };
+  const startTranslationQuiz = () => {
+    setQuizQuestions(pickPool(moduleId, "translationQuiz", 12));
+    setActiveExercise("translation");
+    setExerciseResult(null);
+  };
+  const startListeningQuiz = () => {
+    setQuizQuestions(pickPool(moduleId, "listening", 12));
+    setActiveExercise("listening");
+    setExerciseResult(null);
+  };
+  const startWordGuess = () => {
+    setQuizQuestions(pickPool(moduleId, "wordGuess", 12));
+    setActiveExercise("wordguess");
+    setExerciseResult(null);
+  };
+  const startErrorCorrection = () => {
+    setQuizQuestions(pickPool(moduleId, "errorCorrection", 10));
+    setActiveExercise("errorcorrection");
+    setExerciseResult(null);
+  };
+  const startVerbConjugation = () => {
+    setQuizQuestions(pickPool(moduleId, "verbConjugation", 14));
+    setActiveExercise("verbconj");
+    setExerciseResult(null);
+  };
+
+  const NEW_TYPES = ["sentence", "translation", "listening", "wordguess", "errorcorrection", "verbconj"];
+
   const handleExerciseComplete = (score, totalOrBonus, customTotal) => {
     let finalScore = score;
     let finalTotal = customTotal || 10;
@@ -187,6 +235,8 @@ export default function ModuleDetail({ progress, learnedWords, toggleWordLearned
       finalScore = score / 10;
       finalTotal = score / 10;
     } else if (activeExercise === "grammar") {
+      finalTotal = totalOrBonus;
+    } else if (NEW_TYPES.includes(activeExercise)) {
       finalTotal = totalOrBonus;
     }
 
@@ -214,7 +264,7 @@ export default function ModuleDetail({ progress, learnedWords, toggleWordLearned
       <div className="flex flex-col gap-4 pb-4 border-b border-slate-200 dark:border-indigo-950/40">
         <div className="flex items-center gap-3">
           <Link
-            to="/"
+            to="/kurslar"
             className="p-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-indigo-950/60 border border-slate-200/50 dark:border-indigo-900/10 text-slate-500 dark:text-slate-400 flex-shrink-0"
           >
             <ArrowLeft className="w-5 h-5" />
@@ -347,14 +397,22 @@ export default function ModuleDetail({ progress, learnedWords, toggleWordLearned
       {/* ===== TAB: WORDS ===== */}
       {activeTab === "words" && (
         <div className="max-w-4xl mx-auto space-y-4">
-          <div className="flex justify-between items-center px-1">
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 px-1">
             <h2 className="text-lg font-black text-slate-800 dark:text-slate-100">
               Konunun Kelimeleri ({moduleWords.length} Adet)
             </h2>
-            <div className="flex gap-2 text-[10px] font-bold">
-              <span className="px-2 py-1 rounded-full bg-blue-500/10 text-blue-500">der=Eril</span>
-              <span className="px-2 py-1 rounded-full bg-rose-500/10 text-rose-500">die=Dişil</span>
-              <span className="px-2 py-1 rounded-full bg-amber-500/10 text-amber-500">das=Nötr</span>
+            <div className="flex items-center gap-2 flex-wrap">
+              <div className="flex gap-2 text-[10px] font-bold">
+                <span className="px-2 py-1 rounded-full bg-blue-500/10 text-blue-500">der=Eril</span>
+                <span className="px-2 py-1 rounded-full bg-rose-500/10 text-rose-500">die=Dişil</span>
+                <span className="px-2 py-1 rounded-full bg-amber-500/10 text-amber-500">das=Nötr</span>
+              </div>
+              <Link
+                to={`/kelime?module=${moduleId}`}
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-accentViolet-500/10 hover:bg-accentViolet-500 text-accentViolet-600 hover:text-white dark:text-accentViolet-400 text-xs font-black transition-all"
+              >
+                🃏 Kelime Kartlarıyla Çalış
+              </Link>
             </div>
           </div>
 
@@ -529,6 +587,72 @@ export default function ModuleDetail({ progress, learnedWords, toggleWordLearned
                     badgeColor: "sky",
                     disabled: !grammarExerciseData,
                   },
+                  {
+                    emoji: "🔤",
+                    title: "Cümle Kurma",
+                    desc: getModulePracticePool(moduleId, "sentenceBuilder").length
+                      ? `Karışık kelimeleri doğru sıraya diz — ${getModulePracticePool(moduleId, "sentenceBuilder").length} soruluk havuz.`
+                      : "Bu modül için cümle kurma alıştırması bulunmamaktadır.",
+                    onClick: startSentenceBuilder,
+                    badge: getModulePracticePool(moduleId, "sentenceBuilder").length ? "Karıştırılmış" : "Yakında",
+                    badgeColor: "violet",
+                    disabled: !getModulePracticePool(moduleId, "sentenceBuilder").length,
+                  },
+                  {
+                    emoji: "🌍",
+                    title: "TR → DE Çeviri",
+                    desc: getModulePracticePool(moduleId, "translationQuiz").length
+                      ? `Türkçeyi Almancaya çevir — ${getModulePracticePool(moduleId, "translationQuiz").length} soruluk havuz.`
+                      : "Bu modül için çeviri alıştırması bulunmamaktadır.",
+                    onClick: startTranslationQuiz,
+                    badge: getModulePracticePool(moduleId, "translationQuiz").length ? "Karıştırılmış" : "Yakında",
+                    badgeColor: "sky",
+                    disabled: !getModulePracticePool(moduleId, "translationQuiz").length,
+                  },
+                  {
+                    emoji: "🎧",
+                    title: "Dinleme",
+                    desc: getModulePracticePool(moduleId, "listening").length
+                      ? `Almancayı dinle ve doğru seçeneği bul — ${getModulePracticePool(moduleId, "listening").length} soruluk havuz.`
+                      : "Bu modül için dinleme alıştırması bulunmamaktadır.",
+                    onClick: startListeningQuiz,
+                    badge: getModulePracticePool(moduleId, "listening").length ? "Karıştırılmış" : "Yakında",
+                    badgeColor: "amber",
+                    disabled: !getModulePracticePool(moduleId, "listening").length,
+                  },
+                  {
+                    emoji: "🧠",
+                    title: "Kelime Tahmini",
+                    desc: getModulePracticePool(moduleId, "wordGuess").length
+                      ? `İpucundan Almanca kelimeyi bul — ${getModulePracticePool(moduleId, "wordGuess").length} soruluk havuz.`
+                      : "Bu modül için kelime tahmini alıştırması bulunmamaktadır.",
+                    onClick: startWordGuess,
+                    badge: getModulePracticePool(moduleId, "wordGuess").length ? "Karıştırılmış" : "Yakında",
+                    badgeColor: "emerald",
+                    disabled: !getModulePracticePool(moduleId, "wordGuess").length,
+                  },
+                  {
+                    emoji: "🔍",
+                    title: "Hata Bul & Düzelt",
+                    desc: getModulePracticePool(moduleId, "errorCorrection").length
+                      ? `Yanlış cümleyi tespit et — ${getModulePracticePool(moduleId, "errorCorrection").length} soruluk havuz.`
+                      : "Bu modül için hata bulma alıştırması bulunmamaktadır.",
+                    onClick: startErrorCorrection,
+                    badge: getModulePracticePool(moduleId, "errorCorrection").length ? "Karıştırılmış" : "Yakında",
+                    badgeColor: "orange",
+                    disabled: !getModulePracticePool(moduleId, "errorCorrection").length,
+                  },
+                  {
+                    emoji: "📝",
+                    title: "Fiil Çekimi",
+                    desc: getModulePracticePool(moduleId, "verbConjugation").length
+                      ? `Bu modülün fiillerini tüm şahıslarla çekimle — ${getModulePracticePool(moduleId, "verbConjugation").length} soruluk havuz.`
+                      : "Bu modül için fiil çekimi alıştırması bulunmamaktadır.",
+                    onClick: startVerbConjugation,
+                    badge: getModulePracticePool(moduleId, "verbConjugation").length ? "Karıştırılmış" : "Yakında",
+                    badgeColor: "teal",
+                    disabled: !getModulePracticePool(moduleId, "verbConjugation").length,
+                  },
                 ].map(ex => (
                   <button
                     key={ex.title}
@@ -559,6 +683,12 @@ export default function ModuleDetail({ progress, learnedWords, toggleWordLearned
           {activeExercise === "choice" && <MultipleChoice questions={quizQuestions} onComplete={handleExerciseComplete} />}
           {activeExercise === "match" && <DragMatch words={moduleWords} onComplete={pts => handleExerciseComplete(pts)} />}
           {activeExercise === "grammar" && activeGrammarData && <GrammarExercise grammarData={activeGrammarData} onComplete={(score, total) => handleExerciseComplete(score, total)} />}
+          {activeExercise === "sentence" && quizQuestions.length > 0 && <SentenceBuilder questions={quizQuestions} onComplete={handleExerciseComplete} />}
+          {activeExercise === "translation" && quizQuestions.length > 0 && <TranslationQuiz questions={quizQuestions} onComplete={handleExerciseComplete} />}
+          {activeExercise === "listening" && quizQuestions.length > 0 && <ListeningQuiz questions={quizQuestions} onComplete={handleExerciseComplete} />}
+          {activeExercise === "wordguess" && quizQuestions.length > 0 && <WordGuess questions={quizQuestions} onComplete={handleExerciseComplete} />}
+          {activeExercise === "errorcorrection" && quizQuestions.length > 0 && <ErrorCorrection questions={quizQuestions} onComplete={handleExerciseComplete} />}
+          {activeExercise === "verbconj" && quizQuestions.length > 0 && <VerbConjugation questions={quizQuestions} onComplete={handleExerciseComplete} />}
 
           {/* Result Card */}
           {exerciseResult && (() => {
@@ -605,7 +735,7 @@ export default function ModuleDetail({ progress, learnedWords, toggleWordLearned
                 <div className="flex flex-col gap-2.5">
                   {passed && nextMod && (
                     <Link
-                      to={`/modules/${nextMod.id}`}
+                      to={`/kurslar/${nextMod.id}`}
                       className="flex items-center justify-center gap-2 py-3.5 bg-emerald-500 hover:bg-emerald-600 text-white font-extrabold rounded-xl text-sm shadow-md transition-all active:scale-[0.98]"
                     >
                       Sonraki Modül: {nextMod.titleDE}
@@ -624,6 +754,12 @@ export default function ModuleDetail({ progress, learnedWords, toggleWordLearned
                         if (activeExercise === "choice") startMultipleChoice();
                         else if (activeExercise === "fill") startFillInBlank();
                         else if (activeExercise === "grammar") startGrammarExercise();
+                        else if (activeExercise === "sentence") startSentenceBuilder();
+                        else if (activeExercise === "translation") startTranslationQuiz();
+                        else if (activeExercise === "listening") startListeningQuiz();
+                        else if (activeExercise === "wordguess") startWordGuess();
+                        else if (activeExercise === "errorcorrection") startErrorCorrection();
+                        else if (activeExercise === "verbconj") startVerbConjugation();
                         else setExerciseResult(null);
                       }}
                       className="flex-1 py-3 bg-accentViolet-500 hover:bg-accentViolet-600 text-white font-extrabold rounded-xl text-sm shadow-md transition-all"

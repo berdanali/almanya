@@ -2,8 +2,8 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import {
-  BookOpen, ShieldCheck, Layers, ChevronRight,
-  User, Award, Flame, BarChart2, CheckCircle2, GraduationCap, ArrowRight, MessageCircle, Dumbbell
+  BookOpen, ChevronRight,
+  User, Award, Flame, CheckCircle2, GraduationCap, ArrowRight, MessageCircle, Dumbbell, Mic
 } from "lucide-react";
 import { modules } from "../data/modules";
 import { words } from "../data/words";
@@ -23,6 +23,13 @@ export default function Dashboard({ username, streak, points, xp, progress, lear
   useEffect(() => { setQuote(getRandomQuote()); }, []);
 
   const totalWords = words.length;
+  const SUBLEVEL_ORDER = ["A1.1", "A1.2", "A2.1", "A2.2"];
+  const getModSubLevel = (m) => m.subLevel || (m.level === "A2" ? "A2.1" : "A1.1");
+  const sublevelStats = SUBLEVEL_ORDER.map(key => {
+    const mods = modules.filter(m => getModSubLevel(m) === key);
+    const done = mods.filter(m => (progress[m.id] || {}).completed).length;
+    return { key, total: mods.length, done };
+  }).filter(s => s.total > 0);
   const a1Modules = modules.filter(m => (m.level || "A1") === "A1");
   const a2Modules = modules.filter(m => m.level === "A2");
   const completedModules = Object.values(progress).filter(m => m.completed).length;
@@ -118,7 +125,7 @@ export default function Dashboard({ username, streak, points, xp, progress, lear
 
         {/* Kurs Card - big */}
         <Link
-          to="/modules"
+          to="/kurslar"
           className="lg:col-span-2 group bg-slate-900 dark:bg-slate-800 rounded-2xl p-6 border border-slate-800 dark:border-slate-700 hover:shadow-xl transition-all hover:-translate-y-0.5 relative overflow-hidden"
         >
           <div className="absolute right-0 top-0 opacity-[0.04] pointer-events-none">
@@ -130,20 +137,26 @@ export default function Dashboard({ username, streak, points, xp, progress, lear
                 <BookOpen className="w-5 h-5 text-sky-400" />
               </div>
               <div>
-                <h2 className="text-xl font-black text-white">Almanca Kursu (A1 → A2)</h2>
+                <h2 className="text-xl font-black text-white">Almanca Kursu A1 → A2</h2>
                 <p className="text-slate-400 text-sm mt-1 leading-relaxed">
                   {modules.length} modül, {totalWords} kelime. Temel grameri ve günlük dili öğrenin.
                 </p>
               </div>
             </div>
             <div className="space-y-2">
-              <div className="flex justify-between text-xs font-semibold text-slate-400">
-                <span>A1 — {a1Completed}/{a1Modules.length}</span>
-                <span>A2 — {a2Completed}/{a2Modules.length}</span>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-3 gap-y-1.5 text-xs font-semibold text-slate-400">
+                {sublevelStats.map(s => (
+                  <span key={s.key}>{s.key} — {s.done}/{s.total}</span>
+                ))}
               </div>
               <div className="space-y-1.5">
-                <BarLine pct={Math.round((a1Completed / a1Modules.length) * 100) || 0} color="bg-sky-500" />
-                <BarLine pct={Math.round((a2Completed / a2Modules.length) * 100) || 0} color="bg-violet-500" />
+                {sublevelStats.map((s, i) => (
+                  <BarLine
+                    key={s.key}
+                    pct={Math.round((s.done / s.total) * 100) || 0}
+                    color={["bg-sky-500", "bg-teal-500", "bg-violet-500", "bg-indigo-500"][i % 4]}
+                  />
+                ))}
               </div>
               <div className="pt-1 flex items-center gap-1.5 text-sky-400 font-bold text-sm group-hover:gap-2.5 transition-all">
                 Kursa Devam Et <ChevronRight className="w-4 h-4" />
@@ -155,49 +168,31 @@ export default function Dashboard({ username, streak, points, xp, progress, lear
         {/* Side cards */}
         <div className="space-y-4">
           <QuickLink
-            to="/goethe"
-            icon={<ShieldCheck className="w-4 h-4 text-amber-600 dark:text-amber-400" />}
-            iconBg="bg-amber-100 dark:bg-amber-900/30"
-            title="Sınav Hazırlığı"
-            desc="Goethe A1 sınav simülasyonu — 4 beceri alanı"
-            linkText="Sınava Git"
-            linkColor="text-amber-600 dark:text-amber-400"
+            to="/pratik"
+            icon={<Dumbbell className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />}
+            iconBg="bg-emerald-100 dark:bg-emerald-900/30"
+            title="Pratik Merkezi"
+            desc="8 alıştırma türü · Boşluk, çeviri, dinleme, kelime"
+            linkText="Pratik Yap"
+            linkColor="text-emerald-600 dark:text-emerald-400"
           />
           <QuickLink
-            to="/flashcards"
+            to="/kelime"
             icon={<GraduationCap className="w-4 h-4 text-violet-600 dark:text-violet-400" />}
             iconBg="bg-violet-100 dark:bg-violet-900/30"
-            title="Kelime Kartları"
-            desc={`${learnedWords.length} öğrenildi · ${totalWords - learnedWords.length} kelime kaldı`}
+            title="Kelime Merkezi"
+            desc={`${learnedWords.length} öğrenildi · ${totalWords - learnedWords.length} kelime kaldı · SRS`}
             linkText="Kelime Çalış"
             linkColor="text-violet-600 dark:text-violet-400"
           />
           <QuickLink
-            to="/progress"
-            icon={<BarChart2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />}
-            iconBg="bg-emerald-100 dark:bg-emerald-900/30"
-            title="İlerleme & Grafikler"
-            desc="Hata defteri, rozetler ve istatistikler"
-            linkText="İlerlemeyi Gör"
-            linkColor="text-emerald-600 dark:text-emerald-400"
-          />
-          <QuickLink
-            to="/conversations"
-            icon={<MessageCircle className="w-4 h-4 text-teal-600 dark:text-teal-400" />}
+            to="/konusma"
+            icon={<Mic className="w-4 h-4 text-teal-600 dark:text-teal-400" />}
             iconBg="bg-teal-100 dark:bg-teal-900/30"
             title="Konuşma Pratiği"
-            desc="40 senaryo · AI karakterlerle Almanca konuş"
+            desc="Shadowing, telaffuz ve diyalog senaryoları"
             linkText="Konuşmaya Başla"
             linkColor="text-teal-600 dark:text-teal-400"
-          />
-          <QuickLink
-            to="/practice"
-            icon={<Dumbbell className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />}
-            iconBg="bg-emerald-100 dark:bg-emerald-900/30"
-            title="Pratik Merkezi"
-            desc="6 alıştırma türü · Boşluk, çeviri, dinleme, kelime"
-            linkText="Pratik Yap"
-            linkColor="text-emerald-600 dark:text-emerald-400"
           />
         </div>
       </div>
@@ -264,7 +259,7 @@ export default function Dashboard({ username, streak, points, xp, progress, lear
                 </div>
               </div>
               <Link
-                to={`/modules/${nextModule.id}`}
+                to={`/kurslar/${nextModule.id}`}
                 className="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl bg-white/15 hover:bg-white/25 text-white font-bold text-sm border border-white/20 transition-all active:scale-[0.98]"
               >
                 Devam Et <ArrowRight className="w-4 h-4" />
@@ -273,7 +268,7 @@ export default function Dashboard({ username, streak, points, xp, progress, lear
           )}
 
           <Link
-            to="/vocabulary"
+            to="/kelime"
             className="flex items-center gap-4 p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:shadow-md transition-all hover:-translate-y-0.5 group"
           >
             <div className="w-10 h-10 rounded-xl bg-sky-100 dark:bg-sky-900/30 flex items-center justify-center flex-shrink-0">

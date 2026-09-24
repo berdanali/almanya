@@ -3,6 +3,7 @@
 export const modules = [
   {
     id: 1,
+    subLevel: "A1.1",
     titleDE: "Begrüßung",
     titleTR: "Selamlaşma ve Tanıtma",
     icon: "👋",
@@ -64,6 +65,7 @@ export const modules = [
   },
   {
     id: 2,
+    subLevel: "A1.1",
     titleDE: "Zahlen & Zeit",
     titleTR: "Sayılar, Saat ve Tarih",
     icon: "⏰",
@@ -133,6 +135,7 @@ export const modules = [
   },
   {
     id: 3,
+    subLevel: "A1.1",
     titleDE: "Im Supermarkt",
     titleTR: "Markette Alışveriş",
     icon: "🛒",
@@ -192,6 +195,7 @@ export const modules = [
   },
   {
     id: 4,
+    subLevel: "A1.1",
     titleDE: "Verkehrsmittel",
     titleTR: "Ulaşım - Tren, Metro, Otobüs",
     icon: "🚌",
@@ -248,6 +252,7 @@ export const modules = [
   },
   {
     id: 5,
+    subLevel: "A1.1",
     titleDE: "Im Restaurant",
     titleTR: "Restoran ve Kafede Sipariş",
     icon: "🍽️",
@@ -306,6 +311,7 @@ export const modules = [
   },
   {
     id: 6,
+    subLevel: "A1.1",
     titleDE: "Arzt & Apotheke",
     titleTR: "Doktor ve Eczane",
     icon: "⚕️",
@@ -369,6 +375,7 @@ export const modules = [
   },
   {
     id: 7,
+    subLevel: "A1.2",
     titleDE: "Wohnung",
     titleTR: "Daire Kiralama ve Komşuluk",
     icon: "🏠",
@@ -429,6 +436,7 @@ export const modules = [
   },
   {
     id: 8,
+    subLevel: "A1.2",
     titleDE: "Bank & Behörden",
     titleTR: "Banka ve Resmi İşlemler",
     icon: "🏢",
@@ -485,6 +493,7 @@ export const modules = [
   },
   {
     id: 9,
+    subLevel: "A1.2",
     titleDE: "Telefon",
     titleTR: "Telefon Görüşmesi ve İnternet",
     icon: "📞",
@@ -542,6 +551,7 @@ export const modules = [
   },
   {
     id: 10,
+    subLevel: "A1.2",
     titleDE: "Alltag",
     titleTR: "Günlük Hayat ve Argo İfadeler",
     icon: "😎",
@@ -596,6 +606,7 @@ export const modules = [
   },
   {
     id: 11,
+    subLevel: "A1.2",
     titleDE: "Grammatik",
     titleTR: "A1 Gramer Özeti",
     icon: "📚",
@@ -657,6 +668,7 @@ export const modules = [
   },
   {
     id: 12,
+    subLevel: "A1.2",
     titleDE: "Notfall",
     titleTR: "Hızlı Başvuru ve Acil Durum",
     icon: "🚨",
@@ -721,6 +733,7 @@ export const modules = [
   {
     id: 13,
     level: "A2",
+    subLevel: "A2.1",
     titleDE: "Perfekt",
     titleTR: "Geçmiş Zaman (Perfekt)",
     icon: "⏮️",
@@ -794,6 +807,7 @@ export const modules = [
   {
     id: 14,
     level: "A2",
+    subLevel: "A2.1",
     titleDE: "Präteritum",
     titleTR: "Yazılı Geçmiş Zaman",
     icon: "📜",
@@ -871,6 +885,7 @@ export const modules = [
   {
     id: 15,
     level: "A2",
+    subLevel: "A2.1",
     titleDE: "Adjektiv-Deklination",
     titleTR: "Sıfat Çekimi",
     icon: "✏️",
@@ -941,6 +956,7 @@ export const modules = [
   {
     id: 16,
     level: "A2",
+    subLevel: "A2.1",
     titleDE: "Komparativ & Superlativ",
     titleTR: "Karşılaştırma ve Üstünlük",
     icon: "📊",
@@ -1004,6 +1020,7 @@ export const modules = [
   {
     id: 17,
     level: "A2",
+    subLevel: "A2.1",
     titleDE: "Reflexive Verben",
     titleTR: "Dönüşlü Fiiller",
     icon: "🪞",
@@ -1068,6 +1085,7 @@ export const modules = [
   {
     id: 18,
     level: "A2",
+    subLevel: "A2.2",
     titleDE: "Nebensätze",
     titleTR: "Yan Cümleler ve Bağlaçlar",
     icon: "🔗",
@@ -1121,6 +1139,7 @@ export const modules = [
   {
     id: 19,
     level: "A2",
+    subLevel: "A2.2",
     titleDE: "Wechselpräpositionen",
     titleTR: "İki Yönlü Edatlar",
     icon: "📍",
@@ -1181,6 +1200,7 @@ export const modules = [
   {
     id: 20,
     level: "A2",
+    subLevel: "A2.2",
     titleDE: "Konjunktiv II",
     titleTR: "Koşullu Kip: würde, könnte, hätte",
     icon: "💭",
@@ -1241,6 +1261,7 @@ export const modules = [
   {
     id: 21,
     level: "A2",
+    subLevel: "A2.2",
     titleDE: "Berufe & Arbeitswelt",
     titleTR: "Meslekler ve İş Hayatı",
     icon: "💼",
@@ -1313,6 +1334,7 @@ export const modules = [
   {
     id: 22,
     level: "A2",
+    subLevel: "A2.2",
     titleDE: "Urlaub & Freizeit",
     titleTR: "Seyahat ve Boş Zaman",
     icon: "✈️",

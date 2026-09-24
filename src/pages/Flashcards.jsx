@@ -1,5 +1,6 @@
 // src/pages/Flashcards.jsx
 import React, { useState, useEffect, useRef } from "react";
+import { useSearchParams } from "react-router-dom";
 import {
   Award, BookOpen, Layers, CheckCircle2, XCircle, ArrowRight,
   Play, RefreshCw, AlertCircle, Brain, PenLine, Timer, Volume2
@@ -28,12 +29,20 @@ function checkWrite(input, word) {
 
 export default function Flashcards({ addWrongAnswer, recordWordResult }) {
   const { getWordsForReview, recordReview, pendingCount } = useSRS(words);
+  const [searchParams] = useSearchParams();
+  const moduleFromUrl = searchParams.get("module");
 
   // Setup state
   const [mode, setMode] = useState("flip");
   const [timed, setTimed] = useState(false);
-  const [selectedMod, setSelectedMod] = useState("all");
+  const [selectedMod, setSelectedMod] = useState(moduleFromUrl || "all");
   const [wordFilter, setWordFilter] = useState("all");
+
+  // Bir modülden "Kelime Kartları" linkiyle gelindiyse (örn. /flashcards?module=3),
+  // seçili modülü otomatik ayarla.
+  useEffect(() => {
+    if (moduleFromUrl) setSelectedMod(moduleFromUrl);
+  }, [moduleFromUrl]);
 
   // Session state
   const [sessionActive, setSessionActive] = useState(false);

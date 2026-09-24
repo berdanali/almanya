@@ -72,7 +72,7 @@ export default function ModuleCard({ module, progress, index }) {
         </div>
 
         <Link
-          to={`/modules/${module.id}`}
+          to={`/kurslar/${module.id}`}
           className={`flex items-center justify-center gap-2 w-full py-2.5 rounded-lg text-sm font-bold transition-all border ${
             isCompleted
               ? "bg-white border-emerald-200 text-emerald-600 hover:bg-emerald-50 dark:bg-darkNavy-800 dark:border-emerald-900/50 dark:text-emerald-400"

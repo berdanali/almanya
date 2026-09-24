@@ -1,22 +1,16 @@
 // src/App.jsx
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate, useParams } from "react-router-dom";
 
 // Pages
 import Dashboard from "./pages/Dashboard";
 import Modules from "./pages/Modules";
 import ModuleDetail from "./pages/ModuleDetail";
-import Vocabulary from "./pages/Vocabulary";
 import Flashcards from "./pages/Flashcards";
-import Goethe from "./pages/Goethe";
-import GoetheDetail from "./pages/GoetheDetail";
-import DailyLife from "./pages/DailyLife";
-import Exercises from "./pages/Exercises";
-import Progress from "./pages/Progress";
-import ArtikelQuiz from "./pages/ArtikelQuiz";
+import Practice from "./pages/Practice";
+import Speaking from "./pages/Speaking";
 import Conversations from "./pages/Conversations";
 import ConversationChat from "./pages/ConversationChat";
-import Practice from "./pages/Practice";
 
 // Components
 import Navbar from "./components/Navbar";
@@ -30,14 +24,12 @@ export default function App() {
   const {
     learnedWords,
     progress,
-    goetheProgress,
     wrongAnswers,
     points,
     xp,
     dailyQuests,
     toggleWordLearned,
     saveModuleProgress,
-    saveGoetheProgress,
     addWrongAnswer,
     removeWrongAnswer,
     clearWrongAnswers,
@@ -66,8 +58,10 @@ export default function App() {
           onReset={handleReset}
         />
 
-        <main className="flex-1 max-w-6xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {/* pb-16 on mobile reserves space for bottom tab bar */}
+        <main className="flex-1 max-w-6xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 pb-24 md:pb-8">
           <Routes>
+            {/* ── Dashboard ── */}
             <Route
               path="/"
               element={
@@ -84,12 +78,11 @@ export default function App() {
                 />
               }
             />
+
+            {/* ── Kurslar ── */}
+            <Route path="/kurslar" element={<Modules progress={progress} />} />
             <Route
-              path="/modules"
-              element={<Modules progress={progress} />}
-            />
-            <Route
-              path="/modules/:id"
+              path="/kurslar/:id"
               element={
                 <ModuleDetail
                   progress={progress}
@@ -99,17 +92,16 @@ export default function App() {
                 />
               }
             />
+
+            {/* ── Pratik ── */}
             <Route
-              path="/vocabulary"
-              element={
-                <Vocabulary
-                  learnedWords={learnedWords}
-                  toggleWordLearned={toggleWordLearned}
-                />
-              }
+              path="/pratik"
+              element={<Practice addXP={addXP} addPoints={addPoints} />}
             />
+
+            {/* ── Kelime ── */}
             <Route
-              path="/flashcards"
+              path="/kelime"
               element={
                 <Flashcards
                   addWrongAnswer={addWrongAnswer}
@@ -117,78 +109,44 @@ export default function App() {
                 />
               }
             />
+
+            {/* ── Konuşma ── */}
+            <Route path="/konusma" element={<Speaking addXP={addXP} addPoints={addPoints} />} />
+            <Route path="/konusma/diyalog" element={<Conversations />} />
             <Route
-              path="/artikel-quiz"
-              element={<ArtikelQuiz recordWordResult={recordWordResult} />}
-            />
-            <Route
-              path="/exercises"
-              element={
-                <Exercises
-                  progress={progress}
-                  saveModuleProgress={saveModuleProgress}
-                />
-              }
-            />
-            <Route
-              path="/goethe"
-              element={
-                <Goethe
-                  goetheProgress={goetheProgress}
-                />
-              }
-            />
-            <Route
-              path="/goethe/:id"
-              element={
-                <GoetheDetail
-                  saveGoetheProgress={saveGoetheProgress}
-                />
-              }
-            />
-            <Route
-              path="/conversations"
-              element={<Conversations />}
-            />
-            <Route
-              path="/conversations/:id"
+              path="/konusma/diyalog/:id"
               element={<ConversationChat addXP={addXP} addPoints={addPoints} />}
             />
-            <Route
-              path="/practice"
-              element={<Practice addXP={addXP} addPoints={addPoints} />}
-            />
-            <Route
-              path="/dailylife"
-              element={<DailyLife />}
-            />
-            <Route
-              path="/progress"
-              element={
-                <Progress
-                  progress={progress}
-                  learnedWords={learnedWords}
-                  wrongAnswers={wrongAnswers}
-                  points={points}
-                  streak={streak}
-                  removeWrongAnswer={removeWrongAnswer}
-                  clearWrongAnswers={clearWrongAnswers}
-                  wordStats={wordStats}
-                  studyDays={studyDays}
-                />
-              }
-            />
+
+            {/* ── Legacy redirects (old bookmarks) ── */}
+            <Route path="/modules" element={<Navigate to="/kurslar" replace />} />
+            <Route path="/modules/:id" element={<LegacyModuleRedirect />} />
+            <Route path="/practice" element={<Navigate to="/pratik" replace />} />
+            <Route path="/flashcards" element={<Navigate to="/kelime" replace />} />
+            <Route path="/vocabulary" element={<Navigate to="/kelime" replace />} />
+            <Route path="/conversations" element={<Navigate to="/konusma/diyalog" replace />} />
+            <Route path="/conversations/:id" element={<LegacyConvRedirect />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </main>
 
-        <footer className="w-full py-5 mt-8 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-center text-xs text-slate-400 dark:text-slate-500">
-          <div className="max-w-6xl mx-auto px-4">
-            <p className="font-semibold">AlmancaKursu — Goethe A1 Hazırlık Platformu © {new Date().getFullYear()}</p>
-            <p className="mt-0.5">Çevrimdışı çalışır • Tüm veriler cihazınızda saklanır</p>
-          </div>
+        <footer className="hidden md:block w-full py-4 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-center text-xs text-slate-400 dark:text-slate-500">
+          <p className="font-semibold">AlmancaKursu — A1 → A2 Tam Müfredat © {new Date().getFullYear()}</p>
+          <p className="mt-0.5">Çevrimdışı çalışır • Tüm veriler cihazınızda saklanır</p>
         </footer>
 
       </div>
     </Router>
   );
+}
+
+// Legacy redirect helpers
+function LegacyModuleRedirect() {
+  const { id } = useParams();
+  return <Navigate to={`/kurslar/${id}`} replace />;
+}
+
+function LegacyConvRedirect() {
+  const { id } = useParams();
+  return <Navigate to={`/konusma/diyalog/${id}`} replace />;
 }

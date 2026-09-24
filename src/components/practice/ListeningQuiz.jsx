@@ -15,6 +15,7 @@ export default function ListeningQuiz({ questions, onComplete }) {
   const [shuffledOpts, setShuffledOpts] = useState(() => shuffleArray([...questions[0].options]));
 
   const q = questions[currentIndex];
+  const optText = (opt) => (typeof opt === "string" ? opt : opt.text);
 
   const handlePlay = useCallback(() => {
     setIsPlaying(true);
@@ -25,7 +26,7 @@ export default function ListeningQuiz({ questions, onComplete }) {
 
   const handleSelect = (opt) => {
     if (hasSubmitted || !hasPlayed) return;
-    const correct = opt === q.text;
+    const correct = optText(opt) === q.text;
     setSelected(opt);
     setHasSubmitted(true);
     if (correct) { setScore(s => s + 1); playCorrect(); }
@@ -87,7 +88,7 @@ export default function ListeningQuiz({ questions, onComplete }) {
       <div className="space-y-2.5">
         {shuffledOpts.map((opt, i) => {
           const isSelected = selected === opt;
-          const isCorrect = opt === q.text;
+          const isCorrect = optText(opt) === q.text;
           let cls = "w-full p-4 rounded-xl border text-left text-sm font-semibold transition-all ";
           if (!hasSubmitted) {
             cls += hasPlayed
@@ -107,7 +108,12 @@ export default function ListeningQuiz({ questions, onComplete }) {
                 <span className="w-6 h-6 rounded-full bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300 text-xs font-black flex items-center justify-center flex-shrink-0">
                   {String.fromCharCode(65 + i)}
                 </span>
-                <span className="flex-1">{opt}</span>
+                <span className="flex-1 text-left">
+                  <span className="block font-semibold">{opt.text ?? opt}</span>
+                  {opt.translation && (
+                    <span className="block text-xs text-slate-400 dark:text-slate-500 mt-0.5 font-normal">{opt.translation}</span>
+                  )}
+                </span>
                 {hasSubmitted && isCorrect && <CheckCircle2 className="w-4 h-4 text-emerald-500 flex-shrink-0" />}
                 {hasSubmitted && isSelected && !isCorrect && <XCircle className="w-4 h-4 text-rose-500 flex-shrink-0" />}
               </div>
