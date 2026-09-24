@@ -1396,5 +1396,212 @@ export const modules = [
       { de: "Was kann man hier in der Gegend besichtigen?", tr: "Bu çevrede ne gibi yerler gezebiliriz?" },
       { de: "Am Wochenende gehe ich gern wandern oder ins Kino.", tr: "Hafta sonları yürüyüşe çıkmayı veya sinemaya gitmeyi severim." },
     ]
+  },
+
+  // ── A1.1 Ek Modüller (Standart Müfredat) ─────────────────────────────
+  {
+    id: 23,
+    subLevel: "A1.1",
+    titleDE: "Berufe & Persönliches",
+    titleTR: "Meslekler ve Kişisel Bilgiler",
+    icon: "💼",
+    color: "#0369a1",
+    description: "Meslek söyleme ve sorma, kişisel bilgiler (ad, adres, uyruk, medeni durum) ve form doldurma kalıpları.",
+    grammar: {
+      title: "Meslek Bildirme: Artikel Kullanılmaz!",
+      notes: [
+        "Almanca'da meslek belirtirken artikel (der/die/das) kullanılmaz:\n✅ 'Ich bin Arzt.' (Doktorum.)\n✅ 'Sie ist Lehrerin.' (Öğretmen.)\n❌ 'Ich bin ein Arzt.' — Yanlış!",
+        "Meslek sorma kalıpları:\n- Was sind Sie von Beruf? (Resmi: Mesleğiniz ne?)\n- Was bist du von Beruf? (Samimi: Mesleğin ne?)\n- Wo arbeiten Sie? (Nerede çalışıyorsunuz?)",
+        "Çalışma şeklini belirtmek için 'als' kalıbı:\n- 'Ich arbeite als Ingenieur.' (Mühendis olarak çalışıyorum.)\n- 'Sie arbeitet als Lehrerin bei einer Schule.' (Bir okulda öğretmen olarak çalışıyor.)",
+        "Medeni durum (Familienstand):\n- ledig (bekar)\n- verheiratet (evli)\n- geschieden (boşanmış)\n- verwitwet (dul)\nFormda genellikle sorulan bilgiler: Vorname (ad), Nachname (soyad), Geburtsdatum (d.tarihi), Wohnort (ikametgah), Nationalität (milliyet), Muttersprache (anadil)."
+      ]
+    },
+    grammarTables: [
+      {
+        title: "Yaygın Meslekler (A1.1 Seviyesi)",
+        headers: ["Erkek Formu", "Kadın Formu", "Türkçe"],
+        rows: [
+          ["der Arzt", "die Ärztin", "Doktor"],
+          ["der Lehrer", "die Lehrerin", "Öğretmen"],
+          ["der Student", "die Studentin", "Üniversite öğrencisi"],
+          ["der Schüler", "die Schülerin", "Öğrenci (okul)"],
+          ["der Ingenieur", "die Ingenieurin", "Mühendis"],
+          ["der Kellner", "die Kellnerin", "Garson"],
+          ["der Bäcker", "die Bäckerin", "Fırıncı"],
+          ["der Koch", "die Köchin", "Aşçı"],
+          ["der Polizist", "die Polizistin", "Polis"],
+          ["die Krankenschwester", "der Krankenpfleger", "Hemşire"],
+          ["der Rentner", "die Rentnerin", "Emekli"],
+          ["die Hausfrau", "der Hausmann", "Ev hanımı / Ev erkeği"],
+        ]
+      },
+      {
+        title: "Kişisel Bilgiler Formu",
+        headers: ["Almanca", "Türkçe", "Örnek"],
+        rows: [
+          ["der Vorname", "ad", "Ahmet"],
+          ["der Nachname / Familienname", "soyad", "Yılmaz"],
+          ["das Geburtsdatum", "doğum tarihi", "15.03.1995"],
+          ["der Wohnort", "ikamet yeri", "Berlin"],
+          ["die Nationalität", "milliyet", "türkisch"],
+          ["die Muttersprache", "anadil", "Türkisch"],
+          ["der Familienstand", "medeni durum", "ledig / verheiratet"],
+        ]
+      }
+    ],
+    culturalNote: "🇩🇪 Almanya'da iş görüşmelerinde veya resmi başvurularda mesleğinizi doğru söylemek önemlidir. İlginç bir kural: Almancada meslek belirtirken artikel kullanılmaz ama 'kein' (yok) geldiğinde gelir: 'Ich bin kein Arzt.' (Doktor değilim.) — çünkü burada olumsuzluk için ein geri döner!",
+    annaTip: "💡 Anna'nın İpucu: 'Was machst du beruflich?' (Mesleki olarak ne yapıyorsun?) kalıbı da çok kullanılır. Cevap: 'Ich bin Lehrerin.' veya 'Ich arbeite als Ingenieur.' İkisi de doğru ve doğal.",
+    commonMistakes: [
+      "❌ 'Ich bin eine Ärztin.' → Meslek belirtirken artikel yok!",
+      "✅ 'Ich bin Ärztin.' deyin.",
+      "❌ 'Ich arbeite wie Lehrer.' → 'wie' değil 'als' kullanılır!",
+      "✅ 'Ich arbeite als Lehrer.' deyin.",
+    ],
+    examples: [
+      { de: "Was sind Sie von Beruf?", tr: "Mesleğiniz ne?" },
+      { de: "Ich bin Lehrerin an einer Grundschule.", tr: "Bir ilkokulda öğretmenim." },
+      { de: "Mein Vater arbeitet als Ingenieur bei einer Firma.", tr: "Babam bir şirkette mühendis olarak çalışıyor." },
+      { de: "Sie ist geschieden und hat eine Tochter.", tr: "Boşanmış ve bir kızı var." },
+      { de: "Meine Muttersprache ist Türkisch, aber ich spreche auch Deutsch.", tr: "Anadilim Türkçe ama Almanca da konuşuyorum." },
+    ]
+  },
+
+  {
+    id: 24,
+    subLevel: "A1.1",
+    titleDE: "Familie & Sprachen",
+    titleTR: "Aile ve Diller",
+    icon: "👨‍👩‍👧‍👦",
+    color: "#059669",
+    description: "Aile üyelerini tanıtma, aile hakkında konuşma ve hangi dilleri ne kadar iyi konuştuğunu söyleme kalıpları.",
+    grammar: {
+      title: "Sahiplik Zamirleri: mein / meine / dein / deine",
+      notes: [
+        "Aile üyelerinden bahsederken sahiplik zamirleri (Possessivpronomen) kullanılır:\n- ich → mein (erkil/nötr), meine (dişil)\n- du → dein, deine\n- er/es → sein, seine\n- sie → ihr, ihre\n- wir → unser, unsere\n- sie/Sie → ihr/Ihr, ihre/Ihre",
+        "Örnekler:\n- 'Das ist mein Vater.' (Bu benim babam.) — der Vater → mein\n- 'Meine Mutter kocht sehr gut.' (Annem çok iyi yemek yapıyor.) — die Mutter → meine\n- 'Sein Bruder ist Arzt.' (Erkek kardeşi doktor.) — der Bruder → sein\n- 'Ihre Schwester studiert in Berlin.' (Kız kardeşi Berlin'de okuyor.) — die Schwester → ihre",
+        "Dil bildirme kuralları:\n- Dil adları büyük harfle başlar ve artikel almaz!\n- 'Ich spreche Türkisch und Deutsch.' (Türkçe ve Almanca konuşuyorum.)\n- 'Meine Muttersprache ist Türkisch.' (Anadilim Türkçe.)\n- Dil adları aynı zamanda Almancada uyruk sıfatı olarak da kullanılır: Ich bin türkisch (kleine harf = sıfat).",
+        "Dil yetkinliğini ifade etmek:\n- fließend (akıcı): 'Ich spreche fließend Englisch.'\n- gut (iyi): 'Ich spreche gut Deutsch.'\n- ein bisschen / ein wenig (biraz): 'Ich spreche ein bisschen Spanisch.'\n- gar nicht (hiç): 'Ich spreche gar kein Russisch.'"
+      ]
+    },
+    grammarTables: [
+      {
+        title: "Aile Üyeleri",
+        headers: ["Almanca", "Türkçe", "Çoğul"],
+        rows: [
+          ["die Mutter", "anne", "Mütter"],
+          ["der Vater", "baba", "Väter"],
+          ["die Schwester", "kız kardeş", "Schwestern"],
+          ["der Bruder", "erkek kardeş", "Brüder"],
+          ["die Tochter", "kız çocuk", "Töchter"],
+          ["der Sohn", "oğul", "Söhne"],
+          ["die Oma / Großmutter", "büyükanne / dede", "Omas"],
+          ["der Opa / Großvater", "büyükbaba / dede", "Opas"],
+          ["die Tante", "hala / teyze", "Tanten"],
+          ["der Onkel", "amca / dayı", "Onkel"],
+          ["die Geschwister", "kardeşler (toplu)", "nur Plural"],
+          ["die Eltern", "anne ve baba", "nur Plural"],
+        ]
+      },
+      {
+        title: "Dünyada Konuşulan Diller",
+        headers: ["Almanca", "Türkçe"],
+        rows: [
+          ["Deutsch", "Almanca"],
+          ["Türkisch", "Türkçe"],
+          ["Englisch", "İngilizce"],
+          ["Arabisch", "Arapça"],
+          ["Französisch", "Fransızca"],
+          ["Spanisch", "İspanyolca"],
+          ["Russisch", "Rusça"],
+          ["Chinesisch", "Çince"],
+          ["Japanisch", "Japonca"],
+          ["Italienisch", "İtalyanca"],
+        ]
+      }
+    ],
+    culturalNote: "🇩🇪 Almanya çok kültürlü bir topluma sahiptir. Türkiye kökenli yaklaşık 3 milyon kişi Almanya'da yaşıyor. 'Migrationshintergrund' (göçmen kökeni) ifadesi sıkça kullanılır. Almanya'da birçok ailenin evde anadilini, dışarıda ise Almancayı konuştuğu iki dilli bir yapı söz konusudur. Bu durum son derece değerli kabul edilir.",
+    annaTip: "💡 Anna'nın İpucu: Aile üyelerini sunarken 'Das ist mein...' (Bu benim...) kalıbını kullanın. 'Das ist mein Vater, Klaus.' (Bu benim babam Klaus.) Aile fotoğrafına bakarak pratik yapmak en etkili yöntemdir — gerçek isimlerle çalışmak hafızayı güçlendirir!",
+    commonMistakes: [
+      "❌ 'Mein Mutter kocht gut.' → die Mutter → meine!",
+      "✅ 'Meine Mutter kocht gut.' deyin.",
+      "❌ 'Ich spreche die Türkisch.' → Dil adları artikel almaz!",
+      "✅ 'Ich spreche Türkisch.' deyin.",
+      "❌ 'Mein Schwester' → die Schwester → dişil → meine!",
+      "✅ 'Meine Schwester' deyin.",
+    ],
+    examples: [
+      { de: "Das ist meine Familie: meine Eltern, meine Schwester und ich.", tr: "Bu benim ailem: annem, babam, kız kardeşim ve ben." },
+      { de: "Ich spreche fließend Türkisch und ein bisschen Deutsch.", tr: "Akıcı Türkçe ve biraz Almanca konuşuyorum." },
+      { de: "Mein Bruder wohnt in Berlin, aber meine Eltern leben in İzmir.", tr: "Erkek kardeşim Berlin'de oturuyor ama ebeveynlerim İzmir'de yaşıyor." },
+      { de: "Hast du Geschwister?", tr: "Kardeşin var mı?" },
+      { de: "Welche Sprachen sprechen Sie?", tr: "Hangi dilleri konuşuyorsunuz?" },
+    ]
+  },
+
+  {
+    id: 25,
+    subLevel: "A1.1",
+    titleDE: "Gegenstände, Farben & Materialien",
+    titleTR: "Eşyalar, Renkler ve Malzemeler",
+    icon: "🎨",
+    color: "#dc2626",
+    description: "Günlük eşyaları tanımlama, renk adları, malzeme sorma ve 'aus + Dativ' kalıbıyla neden yapıldığını söyleme.",
+    grammar: {
+      title: "Renk Sıfatları + 'aus + Dativ' (Malzeme)",
+      notes: [
+        "Renk sıfatları ismin önüne geldiğinde ek alır, tek başına yüklem olduğunda almaz:\n- 'Das Auto ist rot.' (Araba kırmızı.) — yüklem: ek yok\n- 'Das ist ein rotes Auto.' (Bu kırmızı bir araba.) — ismin önünde: -es eki\n- 'Ich kaufe die rote Tasche.' (Kırmızı çantayı alıyorum.) — die Tasche → -e eki",
+        "Bir şeyin neden yapıldığını sormak ve söylemek:\n- 'Woraus ist das?' (Bu neden yapılmış?)\n- 'Es ist aus Holz.' (Ahşaptan.)\n- 'aus + malzeme ismi (Dativ)'\n  → aus Holz (ahşaptan), aus Metall (metalden), aus Leder (deriden),\n    aus Plastik (plasticten), aus Baumwolle (pamuktan), aus Glas (camdan)",
+        "Bir eşyayı tanımlamak için kullanılan sorular:\n- 'Was ist das?' (Bu ne?)\n- 'Welche Farbe hat es?' (Rengi ne?)\n- 'Wie ist es?' (Nasıl? — büyük/küçük, ağır/hafif)\n- 'Woraus ist es?' (Neden yapılmış?)"
+      ]
+    },
+    grammarTables: [
+      {
+        title: "Renkler (Farben)",
+        headers: ["Almanca", "Türkçe", "Örnek"],
+        rows: [
+          ["rot", "kırmızı", "ein rotes Auto"],
+          ["blau", "mavi", "ein blaues Hemd"],
+          ["grün", "yeşil", "eine grüne Tasche"],
+          ["gelb", "sarı", "ein gelbes Taxi"],
+          ["schwarz", "siyah", "schwarze Schuhe"],
+          ["weiß", "beyaz", "ein weißes Papier"],
+          ["grau", "gri", "ein grauer Mantel"],
+          ["braun", "kahverengi", "braune Augen"],
+          ["orange", "turuncu", "eine orange Mütze"],
+          ["lila", "mor", "ein lila Kleid"],
+          ["rosa", "pembe", "ein rosa Hemd"],
+        ]
+      },
+      {
+        title: "Malzemeler (Materialien) — aus + ...",
+        headers: ["Almanca", "Türkçe", "Örnek"],
+        rows: [
+          ["aus Holz", "ahşaptan", "Der Tisch ist aus Holz."],
+          ["aus Metall", "metalden", "Die Gabel ist aus Metall."],
+          ["aus Leder", "deriden", "Die Tasche ist aus Leder."],
+          ["aus Plastik", "plasticten", "Die Flasche ist aus Plastik."],
+          ["aus Glas", "camdan", "Das Fenster ist aus Glas."],
+          ["aus Baumwolle", "pamuktan", "Das T-Shirt ist aus Baumwolle."],
+          ["aus Stoff / Wolle", "kumaş/yünden", "Der Pullover ist aus Wolle."],
+        ]
+      }
+    ],
+    culturalNote: "🇩🇪 Almanya'da 'Flohmarkt' (bit pazarı) kültürü çok yaygındır. Hafta sonları şehirlerde kurulan bit pazarlarında eski eşyalar, giysiler ve antikalar satılır. Bu ortamlar 'Wie viel kostet das?' (Bu ne kadar?) ve renk/malzeme sorularını pratikte kullanmak için mükemmel bir fırsattır!",
+    annaTip: "💡 Anna'nın İpucu: Renk öğrenmek için etrafınızdaki nesneleri Almanca tanımlamayı deneyin. 'Mein Stift ist blau.' (Kalemim mavi.) 'Meine Tasche ist schwarz.' (Çantam siyah.) Günlük hayatta gördüğünüz 5 şeyin rengini her gün Almanca söyleyin — bir haftada otomatikleşir!",
+    commonMistakes: [
+      "❌ 'Das ist ein rot Auto.' → İsmin önünde sıfat ek alır!",
+      "✅ 'Das ist ein rotes Auto.' deyin.",
+      "❌ 'Es ist von Holz.' → Malzeme için 'von' değil 'aus' kullanılır!",
+      "✅ 'Es ist aus Holz.' deyin.",
+      "❌ 'Meine Lieblingsfarbe ist das Blau.' → Renk yüklem olunca artikel almaz!",
+      "✅ 'Meine Lieblingsfarbe ist blau.' deyin.",
+    ],
+    examples: [
+      { de: "Was ist das? — Das ist eine Tasche.", tr: "Bu ne? — Bu bir çanta." },
+      { de: "Welche Farbe hat die Tasche? — Sie ist braun.", tr: "Çantanın rengi ne? — Kahverengi." },
+      { de: "Woraus ist der Tisch? — Er ist aus Holz.", tr: "Masa neden yapılmış? — Ahşaptan." },
+      { de: "Ich suche ein blaues Heft und einen roten Kugelschreiber.", tr: "Mavi bir defter ve kırmızı bir tükenmez kalem arıyorum." },
+      { de: "Meine Lieblingsfarbe ist grün.", tr: "En sevdiğim renk yeşil." },
+    ]
   }
 ];
